@@ -28,178 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yazıcıEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yazıcıKaldırToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbTesisAdi = new System.Windows.Forms.ComboBox();
-            this.lblTesisAdi = new System.Windows.Forms.Label();
-            this.lblBantAdi = new System.Windows.Forms.Label();
-            this.cmbBantAdi = new System.Windows.Forms.ComboBox();
-            this.lblYaziciAdi = new System.Windows.Forms.Label();
-            this.cmbYaziciAdi = new System.Windows.Forms.ComboBox();
-            this.lblBaglanti = new System.Windows.Forms.Label();
-            this.cmbBaglanti = new System.Windows.Forms.ComboBox();
-            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.gbFabrika = new System.Windows.Forms.GroupBox();
+            this.tbYeniFabrika = new System.Windows.Forms.TextBox();
+            this.lblYeniFabrika = new System.Windows.Forms.Label();
+            this.btnYeniFabrikaEkle = new System.Windows.Forms.Button();
+            this.cmbSilinecekFabrika = new System.Windows.Forms.ComboBox();
+            this.lblSilinecekFabrika = new System.Windows.Forms.Label();
+            this.btnFabrikaSil = new System.Windows.Forms.Button();
+            this.tbGuncelFabrika = new System.Windows.Forms.TextBox();
+            this.lblGuncelFabrikaAdi = new System.Windows.Forms.Label();
+            this.lblGuncelFabrika = new System.Windows.Forms.Label();
+            this.cmbGuncelFabrika = new System.Windows.Forms.ComboBox();
+            this.btnFabrikaGuncelle = new System.Windows.Forms.Button();
+            this.gbTesis = new System.Windows.Forms.GroupBox();
+            this.gbFabrika.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // gbFabrika
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menüToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(523, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.gbFabrika.Controls.Add(this.btnFabrikaGuncelle);
+            this.gbFabrika.Controls.Add(this.lblGuncelFabrikaAdi);
+            this.gbFabrika.Controls.Add(this.tbGuncelFabrika);
+            this.gbFabrika.Controls.Add(this.lblGuncelFabrika);
+            this.gbFabrika.Controls.Add(this.cmbGuncelFabrika);
+            this.gbFabrika.Controls.Add(this.btnFabrikaSil);
+            this.gbFabrika.Controls.Add(this.lblSilinecekFabrika);
+            this.gbFabrika.Controls.Add(this.cmbSilinecekFabrika);
+            this.gbFabrika.Controls.Add(this.btnYeniFabrikaEkle);
+            this.gbFabrika.Controls.Add(this.lblYeniFabrika);
+            this.gbFabrika.Controls.Add(this.tbYeniFabrika);
+            this.gbFabrika.Location = new System.Drawing.Point(12, 12);
+            this.gbFabrika.Name = "gbFabrika";
+            this.gbFabrika.Size = new System.Drawing.Size(837, 73);
+            this.gbFabrika.TabIndex = 0;
+            this.gbFabrika.TabStop = false;
+            this.gbFabrika.Text = "Fabrika";
             // 
-            // menüToolStripMenuItem
+            // tbYeniFabrika
             // 
-            this.menüToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yazıcıEkleToolStripMenuItem,
-            this.yazıcıKaldırToolStripMenuItem,
-            this.hakkındaToolStripMenuItem});
-            this.menüToolStripMenuItem.Name = "menüToolStripMenuItem";
-            this.menüToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menüToolStripMenuItem.Text = "Menü";
-            this.menüToolStripMenuItem.Click += new System.EventHandler(this.menüToolStripMenuItem_Click);
+            this.tbYeniFabrika.Location = new System.Drawing.Point(6, 47);
+            this.tbYeniFabrika.Name = "tbYeniFabrika";
+            this.tbYeniFabrika.Size = new System.Drawing.Size(143, 20);
+            this.tbYeniFabrika.TabIndex = 1;
             // 
-            // yazıcıEkleToolStripMenuItem
+            // lblYeniFabrika
             // 
-            this.yazıcıEkleToolStripMenuItem.Name = "yazıcıEkleToolStripMenuItem";
-            this.yazıcıEkleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.yazıcıEkleToolStripMenuItem.Text = "Yazıcı Ekle";
+            this.lblYeniFabrika.AutoSize = true;
+            this.lblYeniFabrika.Location = new System.Drawing.Point(7, 28);
+            this.lblYeniFabrika.Name = "lblYeniFabrika";
+            this.lblYeniFabrika.Size = new System.Drawing.Size(118, 13);
+            this.lblYeniFabrika.TabIndex = 2;
+            this.lblYeniFabrika.Text = "Yeni fabrika adı giriniz...";
             // 
-            // yazıcıKaldırToolStripMenuItem
+            // btnYeniFabrikaEkle
             // 
-            this.yazıcıKaldırToolStripMenuItem.Name = "yazıcıKaldırToolStripMenuItem";
-            this.yazıcıKaldırToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.yazıcıKaldırToolStripMenuItem.Text = "Yazıcı Kaldır";
+            this.btnYeniFabrikaEkle.Location = new System.Drawing.Point(155, 45);
+            this.btnYeniFabrikaEkle.Name = "btnYeniFabrikaEkle";
+            this.btnYeniFabrikaEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnYeniFabrikaEkle.TabIndex = 3;
+            this.btnYeniFabrikaEkle.Text = "Kayıt Ekle";
+            this.btnYeniFabrikaEkle.UseVisualStyleBackColor = true;
             // 
-            // cmbTesisAdi
+            // cmbSilinecekFabrika
             // 
-            this.cmbTesisAdi.FormattingEnabled = true;
-            this.cmbTesisAdi.Location = new System.Drawing.Point(12, 49);
-            this.cmbTesisAdi.Name = "cmbTesisAdi";
-            this.cmbTesisAdi.Size = new System.Drawing.Size(121, 21);
-            this.cmbTesisAdi.TabIndex = 1;
-            this.cmbTesisAdi.Text = "Tesis adı seçiniz...";
+            this.cmbSilinecekFabrika.FormattingEnabled = true;
+            this.cmbSilinecekFabrika.Location = new System.Drawing.Point(237, 45);
+            this.cmbSilinecekFabrika.Name = "cmbSilinecekFabrika";
+            this.cmbSilinecekFabrika.Size = new System.Drawing.Size(121, 21);
+            this.cmbSilinecekFabrika.TabIndex = 4;
             // 
-            // lblTesisAdi
+            // lblSilinecekFabrika
             // 
-            this.lblTesisAdi.AutoSize = true;
-            this.lblTesisAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTesisAdi.Location = new System.Drawing.Point(12, 33);
-            this.lblTesisAdi.Name = "lblTesisAdi";
-            this.lblTesisAdi.Size = new System.Drawing.Size(68, 13);
-            this.lblTesisAdi.TabIndex = 2;
-            this.lblTesisAdi.Text = "TESİS ADI";
+            this.lblSilinecekFabrika.AutoSize = true;
+            this.lblSilinecekFabrika.Location = new System.Drawing.Point(237, 28);
+            this.lblSilinecekFabrika.Name = "lblSilinecekFabrika";
+            this.lblSilinecekFabrika.Size = new System.Drawing.Size(103, 13);
+            this.lblSilinecekFabrika.TabIndex = 5;
+            this.lblSilinecekFabrika.Text = "Fabrika adı seçiniz...";
             // 
-            // lblBantAdi
+            // btnFabrikaSil
             // 
-            this.lblBantAdi.AutoSize = true;
-            this.lblBantAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBantAdi.Location = new System.Drawing.Point(139, 33);
-            this.lblBantAdi.Name = "lblBantAdi";
-            this.lblBantAdi.Size = new System.Drawing.Size(65, 13);
-            this.lblBantAdi.TabIndex = 4;
-            this.lblBantAdi.Text = "BANT ADI";
-            this.lblBantAdi.Click += new System.EventHandler(this.label1_Click);
+            this.btnFabrikaSil.Location = new System.Drawing.Point(375, 47);
+            this.btnFabrikaSil.Name = "btnFabrikaSil";
+            this.btnFabrikaSil.Size = new System.Drawing.Size(75, 23);
+            this.btnFabrikaSil.TabIndex = 6;
+            this.btnFabrikaSil.Text = "Kayıt Sil";
+            this.btnFabrikaSil.UseVisualStyleBackColor = true;
             // 
-            // cmbBantAdi
+            // tbGuncelFabrika
             // 
-            this.cmbBantAdi.FormattingEnabled = true;
-            this.cmbBantAdi.Location = new System.Drawing.Point(139, 49);
-            this.cmbBantAdi.Name = "cmbBantAdi";
-            this.cmbBantAdi.Size = new System.Drawing.Size(121, 21);
-            this.cmbBantAdi.TabIndex = 3;
-            this.cmbBantAdi.Text = "Bant adı seçiniz...";
-            this.cmbBantAdi.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tbGuncelFabrika.Location = new System.Drawing.Point(585, 47);
+            this.tbGuncelFabrika.Name = "tbGuncelFabrika";
+            this.tbGuncelFabrika.Size = new System.Drawing.Size(139, 20);
+            this.tbGuncelFabrika.TabIndex = 9;
             // 
-            // lblYaziciAdi
+            // lblGuncelFabrikaAdi
             // 
-            this.lblYaziciAdi.AutoSize = true;
-            this.lblYaziciAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblYaziciAdi.Location = new System.Drawing.Point(266, 33);
-            this.lblYaziciAdi.Name = "lblYaziciAdi";
-            this.lblYaziciAdi.Size = new System.Drawing.Size(72, 13);
-            this.lblYaziciAdi.TabIndex = 6;
-            this.lblYaziciAdi.Text = "YAZICI ADI";
+            this.lblGuncelFabrikaAdi.AutoSize = true;
+            this.lblGuncelFabrikaAdi.Location = new System.Drawing.Point(585, 28);
+            this.lblGuncelFabrikaAdi.Name = "lblGuncelFabrikaAdi";
+            this.lblGuncelFabrikaAdi.Size = new System.Drawing.Size(139, 13);
+            this.lblGuncelFabrikaAdi.TabIndex = 10;
+            this.lblGuncelFabrikaAdi.Text = "Güncel fabrika adını giriniz...";
             // 
-            // cmbYaziciAdi
+            // lblGuncelFabrika
             // 
-            this.cmbYaziciAdi.FormattingEnabled = true;
-            this.cmbYaziciAdi.Location = new System.Drawing.Point(266, 49);
-            this.cmbYaziciAdi.Name = "cmbYaziciAdi";
-            this.cmbYaziciAdi.Size = new System.Drawing.Size(121, 21);
-            this.cmbYaziciAdi.TabIndex = 5;
-            this.cmbYaziciAdi.Text = "Yazıcı adı seçiniz...";
+            this.lblGuncelFabrika.AutoSize = true;
+            this.lblGuncelFabrika.Location = new System.Drawing.Point(457, 27);
+            this.lblGuncelFabrika.Name = "lblGuncelFabrika";
+            this.lblGuncelFabrika.Size = new System.Drawing.Size(111, 13);
+            this.lblGuncelFabrika.TabIndex = 8;
+            this.lblGuncelFabrika.Text = "Fabrika adını seçiniz...";
             // 
-            // lblBaglanti
+            // cmbGuncelFabrika
             // 
-            this.lblBaglanti.AutoSize = true;
-            this.lblBaglanti.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBaglanti.Location = new System.Drawing.Point(393, 33);
-            this.lblBaglanti.Name = "lblBaglanti";
-            this.lblBaglanti.Size = new System.Drawing.Size(68, 13);
-            this.lblBaglanti.TabIndex = 8;
-            this.lblBaglanti.Text = "BAĞLANTI";
+            this.cmbGuncelFabrika.FormattingEnabled = true;
+            this.cmbGuncelFabrika.Location = new System.Drawing.Point(457, 45);
+            this.cmbGuncelFabrika.Name = "cmbGuncelFabrika";
+            this.cmbGuncelFabrika.Size = new System.Drawing.Size(121, 21);
+            this.cmbGuncelFabrika.TabIndex = 7;
             // 
-            // cmbBaglanti
+            // btnFabrikaGuncelle
             // 
-            this.cmbBaglanti.FormattingEnabled = true;
-            this.cmbBaglanti.Location = new System.Drawing.Point(393, 49);
-            this.cmbBaglanti.Name = "cmbBaglanti";
-            this.cmbBaglanti.Size = new System.Drawing.Size(121, 21);
-            this.cmbBaglanti.TabIndex = 7;
-            this.cmbBaglanti.Text = "Bağlantı seçiniz...";
+            this.btnFabrikaGuncelle.Location = new System.Drawing.Point(731, 42);
+            this.btnFabrikaGuncelle.Name = "btnFabrikaGuncelle";
+            this.btnFabrikaGuncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnFabrikaGuncelle.TabIndex = 11;
+            this.btnFabrikaGuncelle.Text = "Güncelle";
+            this.btnFabrikaGuncelle.UseVisualStyleBackColor = true;
             // 
-            // hakkındaToolStripMenuItem
+            // gbTesis
             // 
-            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
-            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            this.gbTesis.Location = new System.Drawing.Point(12, 92);
+            this.gbTesis.Name = "gbTesis";
+            this.gbTesis.Size = new System.Drawing.Size(837, 100);
+            this.gbTesis.TabIndex = 1;
+            this.gbTesis.TabStop = false;
+            this.gbTesis.Text = "Tesis";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 554);
-            this.Controls.Add(this.lblBaglanti);
-            this.Controls.Add(this.cmbBaglanti);
-            this.Controls.Add(this.lblYaziciAdi);
-            this.Controls.Add(this.cmbYaziciAdi);
-            this.Controls.Add(this.lblBantAdi);
-            this.Controls.Add(this.cmbBantAdi);
-            this.Controls.Add(this.lblTesisAdi);
-            this.Controls.Add(this.cmbTesisAdi);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(882, 554);
+            this.Controls.Add(this.gbTesis);
+            this.Controls.Add(this.gbFabrika);
             this.Name = "Form1";
             this.Text = "Remote Printer v1.0";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.gbFabrika.ResumeLayout(false);
+            this.gbFabrika.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menüToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yazıcıEkleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yazıcıKaldırToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cmbTesisAdi;
-        private System.Windows.Forms.Label lblTesisAdi;
-        private System.Windows.Forms.Label lblBantAdi;
-        private System.Windows.Forms.ComboBox cmbBantAdi;
-        private System.Windows.Forms.Label lblYaziciAdi;
-        private System.Windows.Forms.ComboBox cmbYaziciAdi;
-        private System.Windows.Forms.Label lblBaglanti;
-        private System.Windows.Forms.ComboBox cmbBaglanti;
-        private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gbFabrika;
+        private System.Windows.Forms.Button btnFabrikaGuncelle;
+        private System.Windows.Forms.Label lblGuncelFabrikaAdi;
+        private System.Windows.Forms.TextBox tbGuncelFabrika;
+        private System.Windows.Forms.Label lblGuncelFabrika;
+        private System.Windows.Forms.ComboBox cmbGuncelFabrika;
+        private System.Windows.Forms.Button btnFabrikaSil;
+        private System.Windows.Forms.Label lblSilinecekFabrika;
+        private System.Windows.Forms.ComboBox cmbSilinecekFabrika;
+        private System.Windows.Forms.Button btnYeniFabrikaEkle;
+        private System.Windows.Forms.Label lblYeniFabrika;
+        private System.Windows.Forms.TextBox tbYeniFabrika;
+        private System.Windows.Forms.GroupBox gbTesis;
+
     }
 }
 
