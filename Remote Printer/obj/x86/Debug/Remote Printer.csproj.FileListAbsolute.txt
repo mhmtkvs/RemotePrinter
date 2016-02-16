@@ -1,1 +1,17 @@
 D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.pdb
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.dll
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.dll
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.xml
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.SqlServer.xml
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.xml
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csprojResolveAssemblyReference.cache
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Form1.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Properties.Resources.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csproj.GenerateResource.Cache
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
