@@ -9,9 +9,15 @@ D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.Linq
 D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.xml
 D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.SqlServer.xml
 D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.xml
-D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csprojResolveAssemblyReference.cache
-D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Form1.resources
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Properties.Resources.resources
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csproj.GenerateResource.Cache
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\Resources\1455723829_factory.png
+D:\Remote-Printer\RemotePrinter\Remote Printer\bin\Debug\Resources\1455724082_git-branch.png
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.FabrikaForm.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csprojResolveAssemblyReference.cache
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.BantForm.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.AnaForm.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.TesisForm.resources
+D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.YaziciForm.resources

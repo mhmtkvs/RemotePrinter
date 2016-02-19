@@ -1,6 +1,6 @@
 ﻿namespace Remote_Printer
 {
-    partial class Form1
+    partial class AnaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fabrikaİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,27 +65,35 @@
             // 
             // fabrikaİşlemleriToolStripMenuItem
             // 
+            this.fabrikaİşlemleriToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fabrikaİşlemleriToolStripMenuItem.Image")));
             this.fabrikaİşlemleriToolStripMenuItem.Name = "fabrikaİşlemleriToolStripMenuItem";
             this.fabrikaİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.fabrikaİşlemleriToolStripMenuItem.Text = "Fabrika İşlemleri";
+            this.fabrikaİşlemleriToolStripMenuItem.Click += new System.EventHandler(this.fabrikaİşlemleriToolStripMenuItem_Click);
             // 
             // tesisİşlemleriToolStripMenuItem
             // 
+            this.tesisİşlemleriToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tesisİşlemleriToolStripMenuItem.Image")));
             this.tesisİşlemleriToolStripMenuItem.Name = "tesisİşlemleriToolStripMenuItem";
             this.tesisİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.tesisİşlemleriToolStripMenuItem.Text = "Tesis İşlemleri";
+            this.tesisİşlemleriToolStripMenuItem.Click += new System.EventHandler(this.tesisİşlemleriToolStripMenuItem_Click);
             // 
             // bantİşlemleriToolStripMenuItem
             // 
+            this.bantİşlemleriToolStripMenuItem.Image = global::Remote_Printer.Properties.Resources.automatic_conveyor_belt;
             this.bantİşlemleriToolStripMenuItem.Name = "bantİşlemleriToolStripMenuItem";
             this.bantİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.bantİşlemleriToolStripMenuItem.Text = "Bant İşlemleri";
+            this.bantİşlemleriToolStripMenuItem.Click += new System.EventHandler(this.bantİşlemleriToolStripMenuItem_Click);
             // 
             // yazıcıİşlemleriToolStripMenuItem
             // 
+            this.yazıcıİşlemleriToolStripMenuItem.Image = global::Remote_Printer.Properties.Resources._1455725048_033_PrinterText;
             this.yazıcıİşlemleriToolStripMenuItem.Name = "yazıcıİşlemleriToolStripMenuItem";
             this.yazıcıİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.yazıcıİşlemleriToolStripMenuItem.Text = "Yazıcı İşlemleri";
+            this.yazıcıİşlemleriToolStripMenuItem.Click += new System.EventHandler(this.yazıcıİşlemleriToolStripMenuItem_Click);
             // 
             // yardımToolStripMenuItem
             // 
@@ -97,24 +106,26 @@
             // 
             // kullanımKılavuzuToolStripMenuItem
             // 
+            this.kullanımKılavuzuToolStripMenuItem.Image = global::Remote_Printer.Properties.Resources._1455730030_document_text_information;
             this.kullanımKılavuzuToolStripMenuItem.Name = "kullanımKılavuzuToolStripMenuItem";
             this.kullanımKılavuzuToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.kullanımKılavuzuToolStripMenuItem.Text = "Kullanım Kılavuzu";
             // 
             // hakkındaToolStripMenuItem
             // 
+            this.hakkındaToolStripMenuItem.Image = global::Remote_Printer.Properties.Resources._1455730231_information;
             this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
             // 
-            // Form1
+            // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 433);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "AnaForm";
             this.Text = "Remote Printer v1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

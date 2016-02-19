@@ -6,22 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SQLite;
 
 namespace Remote_Printer
 {
-    public partial class Form1 : Form
+    public partial class BantForm : Form
     {
-        public Form1()
+        public BantForm()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }
