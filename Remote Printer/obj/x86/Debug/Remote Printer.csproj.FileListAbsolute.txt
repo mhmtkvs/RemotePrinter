@@ -21,3 +21,6 @@ D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Bant
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.AnaForm.resources
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.TesisForm.resources
 D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.YaziciForm.resources
+D:\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
