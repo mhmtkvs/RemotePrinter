@@ -24,3 +24,23 @@ D:\Remote-Printer\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Yazi
 D:\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
 D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
 D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
+D:\RemotePrinter\Remote Printer\bin\Debug\Resources\1455723829_factory.png
+D:\RemotePrinter\Remote Printer\bin\Debug\Resources\1455724082_git-branch.png
+D:\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe
+D:\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.pdb
+D:\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.dll
+D:\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.SqlServer.dll
+D:\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.dll
+D:\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.EF6.dll
+D:\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.Linq.dll
+D:\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.xml
+D:\RemotePrinter\Remote Printer\bin\Debug\EntityFramework.SqlServer.xml
+D:\RemotePrinter\Remote Printer\bin\Debug\System.Data.SQLite.xml
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csprojResolveAssemblyReference.cache
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.BantForm.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.FabrikaForm.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.AnaForm.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Properties.Resources.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.TesisForm.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.YaziciForm.resources
+D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csproj.GenerateResource.Cache

@@ -40,8 +40,8 @@
             this.btnTesisGüncelle = new System.Windows.Forms.Button();
             this.btnTesisEkle = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             ((System.ComponentModel.ISupportInitialize)(this.gvTesisler)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,7 @@
             this.cmbKayitliFabrikalar.Name = "cmbKayitliFabrikalar";
             this.cmbKayitliFabrikalar.Size = new System.Drawing.Size(121, 21);
             this.cmbKayitliFabrikalar.TabIndex = 4;
+            this.cmbKayitliFabrikalar.SelectedIndexChanged += new System.EventHandler(this.cmbKayitliFabrikalar_SelectedIndexChanged);
             // 
             // lblKayitliFabrikalar
             // 
@@ -87,6 +88,7 @@
             this.btnFabrikaSil.TabIndex = 6;
             this.btnFabrikaSil.Text = "Kayıt Sil";
             this.btnFabrikaSil.UseVisualStyleBackColor = true;
+            this.btnFabrikaSil.Click += new System.EventHandler(this.btnFabrikaSil_Click);
             // 
             // lblYeniTesisAdi
             // 
@@ -129,6 +131,7 @@
             this.btnTesisGüncelle.TabIndex = 12;
             this.btnTesisGüncelle.Text = "Güncelle";
             this.btnTesisGüncelle.UseVisualStyleBackColor = true;
+            this.btnTesisGüncelle.Click += new System.EventHandler(this.btnTesisGüncelle_Click);
             // 
             // btnTesisEkle
             // 
@@ -138,6 +141,7 @@
             this.btnTesisEkle.TabIndex = 11;
             this.btnTesisEkle.Text = "Ekle";
             this.btnTesisEkle.UseVisualStyleBackColor = true;
+            this.btnTesisEkle.Click += new System.EventHandler(this.btnTesisEkle_Click);
             // 
             // shapeContainer1
             // 
@@ -151,14 +155,6 @@
             this.shapeContainer1.TabIndex = 17;
             this.shapeContainer1.TabStop = false;
             // 
-            // lineShape1
-            // 
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 12;
-            this.lineShape1.X2 = 212;
-            this.lineShape1.Y1 = 256;
-            this.lineShape1.Y2 = 256;
-            // 
             // lineShape2
             // 
             this.lineShape2.Name = "lineShape2";
@@ -166,6 +162,14 @@
             this.lineShape2.X2 = 211;
             this.lineShape2.Y1 = 312;
             this.lineShape2.Y2 = 312;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 12;
+            this.lineShape1.X2 = 212;
+            this.lineShape1.Y1 = 256;
+            this.lineShape1.Y2 = 256;
             // 
             // TesisForm
             // 
@@ -185,7 +189,8 @@
             this.Controls.Add(this.gvTesisler);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "TesisForm";
-            this.Text = "TesisForm";
+            this.Text = "Tesis İşlemleri";
+            this.Load += new System.EventHandler(this.TesisForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvTesisler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

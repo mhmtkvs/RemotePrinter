@@ -13,10 +13,12 @@ namespace Remote_Printer
 {
     public partial class FabrikaForm : Form
     {
+        /* Veritabanı bağlantı değişkenleri ve bağlantı cümlesi tanımlanıyor.*/
         private SQLiteConnection veritabaniBaglanti = new SQLiteConnection();
         private SQLiteCommand veritabaniKomut;
-        private SQLiteDataReader veritabaniOkuyucu;
-        string connString = "Data Source=D:\\Remote-Printer\\RemotePrinter\\Remote Printer\\Database\\remotePrinter.db";
+
+        string connString = "Data Source=D:\\RemotePrinter\\Remote Printer\\Database\\remotePrinter.db";
+
 
         public FabrikaForm()
         {
@@ -38,24 +40,6 @@ namespace Remote_Printer
             gvKayitliFabrikalar.RowHeadersVisible = false;
 
             fabrikaGetir();
-        }
-
-        private void fabrikaGetir()
-        {
-            veritabaniBaglanti.ConnectionString = connString;
-
-            veritabaniBaglanti.Open();
-
-            string sorgu = "SELECT * FROM Fabrika";
-
-            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
-            {
-                DataTable datatable = new DataTable();
-                datatable.Load(veritabaniKomut.ExecuteReader());
-                gvKayitliFabrikalar.DataSource = datatable; 
-            }
-            veritabaniBaglanti.Close();
-            
         }
 
         private void btnFabrikaEkle_Click(object sender, EventArgs e)
@@ -167,6 +151,24 @@ namespace Remote_Printer
             {
                 MessageBox.Show("Güncel fabrika ismi giriniz!");
             }
+        }
+
+        private void fabrikaGetir()
+        {
+            veritabaniBaglanti.ConnectionString = connString;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT fabrikaAdi FROM Fabrika";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                DataTable datatable = new DataTable();
+                datatable.Load(veritabaniKomut.ExecuteReader());
+                gvKayitliFabrikalar.DataSource = datatable;
+            }
+            veritabaniBaglanti.Close();
+
         }
     }
 }
