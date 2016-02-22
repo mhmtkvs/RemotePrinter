@@ -29,6 +29,7 @@ namespace Remote_Printer
             //string dosyayolu = Application.ExecutablePath.ToString();
             //fabrikaGetir();
 
+
         }
 
         private void fabrikaİşlemleriToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +54,18 @@ namespace Remote_Printer
         {
             YaziciForm yaziciIslemleri = new YaziciForm();
             yaziciIslemleri.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ServiceReference1.Service1Client servis = new ServiceReference1.Service1Client();
+
+            string returnString;
+
+            returnString = servis.GetData(txtService.Text);
+
+            MessageBox.Show(returnString);
+
         }
 
 

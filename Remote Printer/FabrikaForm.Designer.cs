@@ -45,9 +45,13 @@
             // 
             // gvKayitliFabrikalar
             // 
+            this.gvKayitliFabrikalar.AllowUserToAddRows = false;
+            this.gvKayitliFabrikalar.AllowUserToDeleteRows = false;
             this.gvKayitliFabrikalar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvKayitliFabrikalar.Location = new System.Drawing.Point(12, 22);
             this.gvKayitliFabrikalar.Name = "gvKayitliFabrikalar";
+            this.gvKayitliFabrikalar.ReadOnly = true;
+            this.gvKayitliFabrikalar.ShowEditingIcon = false;
             this.gvKayitliFabrikalar.Size = new System.Drawing.Size(201, 150);
             this.gvKayitliFabrikalar.TabIndex = 0;
             this.gvKayitliFabrikalar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvKayitliFabrikalar_CellClick);

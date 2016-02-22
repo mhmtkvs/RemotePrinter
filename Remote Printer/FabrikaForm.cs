@@ -36,8 +36,29 @@ namespace Remote_Printer
             gvKayitliFabrikalar.MultiSelect = false;
             gvKayitliFabrikalar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gvKayitliFabrikalar.ReadOnly = true;
-            gvKayitliFabrikalar.ColumnHeadersVisible = false;
+
+
+
             gvKayitliFabrikalar.RowHeadersVisible = false;
+
+            gvKayitliFabrikalar.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvKayitliFabrikalar.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            gvKayitliFabrikalar.AllowUserToAddRows = false;
+            gvKayitliFabrikalar.AllowUserToDeleteRows = false;
+            gvKayitliFabrikalar.AllowUserToResizeRows = false;
+
+            gvKayitliFabrikalar.AutoResizeColumns();
+
+            // Configure the details DataGridView so that its columns automatically
+            // adjust their widths when the data changes.
+            gvKayitliFabrikalar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gvKayitliFabrikalar.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+
+
+            gvKayitliFabrikalar.ColumnHeadersVisible = false;
+
+            //gvKayitliFabrikalar.Dock = DockStyle.Fill;
 
             fabrikaGetir();
         }
@@ -153,6 +174,9 @@ namespace Remote_Printer
             }
         }
 
+        /*
+         * Fabrika metin kutusuna girili fabrikayı veritabanına kaydeder.
+         */
         private void fabrikaGetir()
         {
             veritabaniBaglanti.ConnectionString = connString;
@@ -165,9 +189,13 @@ namespace Remote_Printer
             {
                 DataTable datatable = new DataTable();
                 datatable.Load(veritabaniKomut.ExecuteReader());
+
+                //gvKayitliFabrikalar.Columns[0].HeaderText = "Fabrika Adı";
                 gvKayitliFabrikalar.DataSource = datatable;
             }
             veritabaniBaglanti.Close();
+
+
 
         }
     }

@@ -31,13 +31,16 @@ namespace Remote_Printer
             tesisGetir(seciliFabrikaAdi);
         }
 
+        /*
+         * Veritabanından tesis isimlerini getirir.
+         * */
         private void tesisGetir(string fabrikaAdi)
         {
             veritabaniBaglanti.ConnectionString = connString;
 
             veritabaniBaglanti.Open();
 
-            string sorgu = "SELECT tesisAdi FROM Tesis WHERE fabrikaID = (SELECT fabrikaID FROM Fabrika WHERE fabrikaAdi = @fabrikaAdi)";
+            string sorgu = "SELECT * FROM Tesis WHERE fabrikaID = (SELECT fabrikaID FROM Fabrika WHERE fabrikaAdi = @fabrikaAdi)";
 
             using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
             {
@@ -85,6 +88,12 @@ namespace Remote_Printer
             return stringarr;
         }
 
+        /*
+         * Yeni tesis metin kutusuna girili tesis adını seçili fabrikanın altında veritabanına kaydeder.
+         * 
+         * YAPILACAK!
+         * Veritabanında kayıtlı tesis adı kontrolü yapılacak !
+         * **/
         private void btnTesisEkle_Click(object sender, EventArgs e)
         {
             if (txtYeniTesisAdi.Text != "")
@@ -119,6 +128,45 @@ namespace Remote_Printer
 
         private void btnFabrikaSil_Click(object sender, EventArgs e)
         {
+            int fabrikaID;
+            int tesisID;
+
+            // listelenen tesislerden işaretli olanın indeksini döndürür.
+            int SeciliIndeks = gvTesisler.CurrentCell.RowIndex;
+
+            // seçim yapılmış ise
+            if (SeciliIndeks >= 0)
+            {
+                // seçili satırdan fabrikaID al.
+                int.TryParse(gvTesisler.Rows[SeciliIndeks].Cells["fabrikaID"].Value.ToString(), out fabrikaID);
+                // seçili satırdan tesisID al.
+                int.TryParse(gvTesisler.Rows[SeciliIndeks].Cells["tesisID"].Value.ToString(), out tesisID);
+
+                veritabaniBaglanti.ConnectionString = connString;
+
+                veritabaniBaglanti.Open();
+
+                string sorgu = "DELETE FROM Tesis WHERE fabrikaID = @fabrikaID AND tesisID = @silinecekTesisID";
+
+                using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+                {
+                    veritabaniKomut.Parameters.AddWithValue("@fabrikaID", fabrikaID);
+                    veritabaniKomut.Parameters.AddWithValue("@silinecekTesisID", tesisID);
+
+                    veritabaniKomut.ExecuteNonQuery();
+                }
+
+                veritabaniBaglanti.Close();
+
+                string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
+
+                tesisGetir(seciliFabrikaAdi);
+            }
+            // seçim yapılmamış ise
+            else
+            {
+                MessageBox.Show("Listeden tesis seçiniz!");
+            }
 
         }
 
