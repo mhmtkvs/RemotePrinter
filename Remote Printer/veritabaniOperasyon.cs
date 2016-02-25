@@ -184,7 +184,7 @@ namespace Remote_Printer
         /*
  * Veritabanından tesis isimlerini getirir.
  * */
-        public void tesisGetir(string fabrikaAdi, DataGridView _tesisler)
+        public void tesisGetir(string _fabrikaAdi, DataGridView _tesisler)
         {
             veritabaniBaglanti.ConnectionString = baglantiCumlesi;
 
@@ -194,13 +194,36 @@ namespace Remote_Printer
 
             using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
             {
-                veritabaniKomut.Parameters.AddWithValue("@fabrikaAdi", fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@fabrikaAdi", _fabrikaAdi);
 
                 DataTable datatable = new DataTable();
                 datatable.Load(veritabaniKomut.ExecuteReader());
                 _tesisler.DataSource = datatable;
             }
             veritabaniBaglanti.Close();
+        }
+        
+        public string[] tesisGetir(string fabrikaAdi)
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT tesisAdi FROM Tesis WHERE fabrikaID = (SELECT fabrikaID FROM Fabrika WHERE fabrikaAdi = @fabrikaAdi)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@fabrikaAdi", fabrikaAdi);
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            veritabaniBaglanti.Close();
+
+            var stringarr = datatable.AsEnumerable().Select(row => row.Field<string>("tesisAdi")).ToArray();
+
+            return stringarr;
         }
 
 
@@ -318,6 +341,49 @@ namespace Remote_Printer
                 veritabaniKomut.ExecuteNonQuery();
             }
 
+            veritabaniBaglanti.Close();
+        }
+
+        public void bantGetir(string _fabrikaAdi, string _tesisAdi, DataGridView _bantlar)
+        {
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT bantAdi,kanalSayisi FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _tesisAdi);
+
+                DataTable datatable = new DataTable();
+                datatable.Load(veritabaniKomut.ExecuteReader());
+                _bantlar.DataSource = datatable;
+            }
+            veritabaniBaglanti.Close();
+        }
+
+        public void bantEkle(string _fabrikaAdi, string _tesisAdi, string _yeniBantAdi, string _yeniKanalSayisi)
+        {
+
+            MessageBox.Show(_fabrikaAdi + " " + _tesisAdi + " " + _yeniBantAdi + " " + _yeniKanalSayisi);
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "INSERT INTO Bant (tesisID,bantAdi,kanalSayisi) VALUES ((SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi),@yeniBantAdi,@yeniKanalSayisi)";
+            
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@yeniBantAdi", _yeniBantAdi);
+                veritabaniKomut.Parameters.AddWithValue("@yeniKanalSayisi", _yeniKanalSayisi);
+
+                veritabaniKomut.ExecuteNonQuery();
+            }
             veritabaniBaglanti.Close();
         }
 

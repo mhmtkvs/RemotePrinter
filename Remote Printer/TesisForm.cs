@@ -28,6 +28,7 @@ namespace Remote_Printer
 
             btnTesisSil.Enabled = false;
             btnTesisGuncelle.Enabled = false;
+            btnTesisEkle.Enabled = false;
 
             // Datagridview özelliklerini ayarla.
             gvTesisler.MultiSelect = false;
@@ -47,6 +48,8 @@ namespace Remote_Printer
 
         private void cmbKayitliFabrikalar_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnTesisEkle.Enabled = true;
+
             string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
 
             veriOperasyon.tesisGetir(seciliFabrikaAdi,gvTesisler);
@@ -76,6 +79,7 @@ namespace Remote_Printer
             {
                 MessageBox.Show("Yeni tesis adı giriniz!");
             }
+
         }
 
         private void btnTesisSil_Click(object sender, EventArgs e)

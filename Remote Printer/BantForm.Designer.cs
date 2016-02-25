@@ -28,154 +28,199 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblYeniTesisAdi = new System.Windows.Forms.Label();
-            this.lblGuncelTesisAdi = new System.Windows.Forms.Label();
-            this.txtYeniTesisAdi = new System.Windows.Forms.TextBox();
-            this.txtGüncelTesisAdi = new System.Windows.Forms.TextBox();
-            this.btnTesisGüncelle = new System.Windows.Forms.Button();
-            this.btnTesisEkle = new System.Windows.Forms.Button();
-            this.btnFabrikaSil = new System.Windows.Forms.Button();
+            this.lblYeniBantAdi = new System.Windows.Forms.Label();
+            this.lblGuncelBantAdi = new System.Windows.Forms.Label();
+            this.txtYeniBantAdi = new System.Windows.Forms.TextBox();
+            this.txtGuncelBantAdi = new System.Windows.Forms.TextBox();
+            this.btnBantGuncelle = new System.Windows.Forms.Button();
+            this.btnBantEkle = new System.Windows.Forms.Button();
+            this.btnBantSil = new System.Windows.Forms.Button();
+            this.lblKayitliTesisler = new System.Windows.Forms.Label();
+            this.cmbKayitliTesisler = new System.Windows.Forms.ComboBox();
+            this.lblKayitliBantlar = new System.Windows.Forms.Label();
+            this.gvBantlar = new System.Windows.Forms.DataGridView();
             this.lblKayitliFabrikalar = new System.Windows.Forms.Label();
             this.cmbKayitliFabrikalar = new System.Windows.Forms.ComboBox();
-            this.lblFabrikaKayıtlıTesisler = new System.Windows.Forms.Label();
-            this.gvTesisler = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gvTesisler)).BeginInit();
+            this.txtGuncelKanalSayisi = new System.Windows.Forms.TextBox();
+            this.txtYeniBantSayisi = new System.Windows.Forms.TextBox();
+            this.lblGuncelKanalSayisi = new System.Windows.Forms.Label();
+            this.lblYeniBantSayisi = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBantlar)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblYeniTesisAdi
+            // lblYeniBantAdi
             // 
-            this.lblYeniTesisAdi.AutoSize = true;
-            this.lblYeniTesisAdi.Location = new System.Drawing.Point(13, 359);
-            this.lblYeniTesisAdi.Name = "lblYeniTesisAdi";
-            this.lblYeniTesisAdi.Size = new System.Drawing.Size(107, 13);
-            this.lblYeniTesisAdi.TabIndex = 27;
-            this.lblYeniTesisAdi.Text = "Yeni tesis adı giriniz...";
-            this.lblYeniTesisAdi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblYeniBantAdi.AutoSize = true;
+            this.lblYeniBantAdi.Location = new System.Drawing.Point(12, 389);
+            this.lblYeniBantAdi.Name = "lblYeniBantAdi";
+            this.lblYeniBantAdi.Size = new System.Drawing.Size(107, 13);
+            this.lblYeniBantAdi.TabIndex = 27;
+            this.lblYeniBantAdi.Text = "Yeni bant adı giriniz...";
+            this.lblYeniBantAdi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblGuncelTesisAdi
+            // lblGuncelBantAdi
             // 
-            this.lblGuncelTesisAdi.AutoSize = true;
-            this.lblGuncelTesisAdi.Location = new System.Drawing.Point(12, 302);
-            this.lblGuncelTesisAdi.Name = "lblGuncelTesisAdi";
-            this.lblGuncelTesisAdi.Size = new System.Drawing.Size(120, 13);
-            this.lblGuncelTesisAdi.TabIndex = 26;
-            this.lblGuncelTesisAdi.Text = "Güncel tesis adı giriniz...";
+            this.lblGuncelBantAdi.AutoSize = true;
+            this.lblGuncelBantAdi.Location = new System.Drawing.Point(12, 292);
+            this.lblGuncelBantAdi.Name = "lblGuncelBantAdi";
+            this.lblGuncelBantAdi.Size = new System.Drawing.Size(120, 13);
+            this.lblGuncelBantAdi.TabIndex = 26;
+            this.lblGuncelBantAdi.Text = "Güncel bant adı giriniz...";
             // 
-            // txtYeniTesisAdi
+            // txtYeniBantAdi
             // 
-            this.txtYeniTesisAdi.Location = new System.Drawing.Point(10, 378);
-            this.txtYeniTesisAdi.Name = "txtYeniTesisAdi";
-            this.txtYeniTesisAdi.Size = new System.Drawing.Size(120, 20);
-            this.txtYeniTesisAdi.TabIndex = 25;
+            this.txtYeniBantAdi.Location = new System.Drawing.Point(12, 405);
+            this.txtYeniBantAdi.Name = "txtYeniBantAdi";
+            this.txtYeniBantAdi.Size = new System.Drawing.Size(120, 20);
+            this.txtYeniBantAdi.TabIndex = 25;
             // 
-            // txtGüncelTesisAdi
+            // txtGuncelBantAdi
             // 
-            this.txtGüncelTesisAdi.Location = new System.Drawing.Point(12, 321);
-            this.txtGüncelTesisAdi.Name = "txtGüncelTesisAdi";
-            this.txtGüncelTesisAdi.Size = new System.Drawing.Size(120, 20);
-            this.txtGüncelTesisAdi.TabIndex = 24;
+            this.txtGuncelBantAdi.Location = new System.Drawing.Point(15, 308);
+            this.txtGuncelBantAdi.Name = "txtGuncelBantAdi";
+            this.txtGuncelBantAdi.Size = new System.Drawing.Size(120, 20);
+            this.txtGuncelBantAdi.TabIndex = 24;
             // 
-            // btnTesisGüncelle
+            // btnBantGuncelle
             // 
-            this.btnTesisGüncelle.Location = new System.Drawing.Point(138, 319);
-            this.btnTesisGüncelle.Name = "btnTesisGüncelle";
-            this.btnTesisGüncelle.Size = new System.Drawing.Size(75, 23);
-            this.btnTesisGüncelle.TabIndex = 23;
-            this.btnTesisGüncelle.Text = "Güncelle";
-            this.btnTesisGüncelle.UseVisualStyleBackColor = true;
+            this.btnBantGuncelle.Location = new System.Drawing.Point(141, 345);
+            this.btnBantGuncelle.Name = "btnBantGuncelle";
+            this.btnBantGuncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnBantGuncelle.TabIndex = 23;
+            this.btnBantGuncelle.Text = "Güncelle";
+            this.btnBantGuncelle.UseVisualStyleBackColor = true;
             // 
-            // btnTesisEkle
+            // btnBantEkle
             // 
-            this.btnTesisEkle.Location = new System.Drawing.Point(136, 376);
-            this.btnTesisEkle.Name = "btnTesisEkle";
-            this.btnTesisEkle.Size = new System.Drawing.Size(75, 23);
-            this.btnTesisEkle.TabIndex = 22;
-            this.btnTesisEkle.Text = "Ekle";
-            this.btnTesisEkle.UseVisualStyleBackColor = true;
+            this.btnBantEkle.Location = new System.Drawing.Point(141, 442);
+            this.btnBantEkle.Name = "btnBantEkle";
+            this.btnBantEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnBantEkle.TabIndex = 22;
+            this.btnBantEkle.Text = "Ekle";
+            this.btnBantEkle.UseVisualStyleBackColor = true;
+            this.btnBantEkle.Click += new System.EventHandler(this.btnBantEkle_Click);
             // 
-            // btnFabrikaSil
+            // btnBantSil
             // 
-            this.btnFabrikaSil.Location = new System.Drawing.Point(138, 263);
-            this.btnFabrikaSil.Name = "btnFabrikaSil";
-            this.btnFabrikaSil.Size = new System.Drawing.Size(75, 23);
-            this.btnFabrikaSil.TabIndex = 21;
-            this.btnFabrikaSil.Text = "Kayıt Sil";
-            this.btnFabrikaSil.UseVisualStyleBackColor = true;
+            this.btnBantSil.Location = new System.Drawing.Point(141, 261);
+            this.btnBantSil.Name = "btnBantSil";
+            this.btnBantSil.Size = new System.Drawing.Size(75, 23);
+            this.btnBantSil.TabIndex = 21;
+            this.btnBantSil.Text = "Kayıt Sil";
+            this.btnBantSil.UseVisualStyleBackColor = true;
+            // 
+            // lblKayitliTesisler
+            // 
+            this.lblKayitliTesisler.AutoSize = true;
+            this.lblKayitliTesisler.Location = new System.Drawing.Point(12, 49);
+            this.lblKayitliTesisler.Name = "lblKayitliTesisler";
+            this.lblKayitliTesisler.Size = new System.Drawing.Size(78, 13);
+            this.lblKayitliTesisler.TabIndex = 20;
+            this.lblKayitliTesisler.Text = "Tesis Seçiniz...";
+            // 
+            // cmbKayitliTesisler
+            // 
+            this.cmbKayitliTesisler.FormattingEnabled = true;
+            this.cmbKayitliTesisler.Location = new System.Drawing.Point(15, 65);
+            this.cmbKayitliTesisler.Name = "cmbKayitliTesisler";
+            this.cmbKayitliTesisler.Size = new System.Drawing.Size(121, 21);
+            this.cmbKayitliTesisler.TabIndex = 19;
+            this.cmbKayitliTesisler.SelectedIndexChanged += new System.EventHandler(this.cmbKayitliTesisler_SelectedIndexChanged);
+            // 
+            // lblKayitliBantlar
+            // 
+            this.lblKayitliBantlar.AutoSize = true;
+            this.lblKayitliBantlar.Location = new System.Drawing.Point(12, 89);
+            this.lblKayitliBantlar.Name = "lblKayitliBantlar";
+            this.lblKayitliBantlar.Size = new System.Drawing.Size(104, 13);
+            this.lblKayitliBantlar.TabIndex = 18;
+            this.lblKayitliBantlar.Text = "Tesise Kayıtlı Bantlar";
+            // 
+            // gvBantlar
+            // 
+            this.gvBantlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvBantlar.Location = new System.Drawing.Point(15, 105);
+            this.gvBantlar.Name = "gvBantlar";
+            this.gvBantlar.Size = new System.Drawing.Size(201, 150);
+            this.gvBantlar.TabIndex = 17;
             // 
             // lblKayitliFabrikalar
             // 
             this.lblKayitliFabrikalar.AutoSize = true;
-            this.lblKayitliFabrikalar.Location = new System.Drawing.Point(12, 51);
+            this.lblKayitliFabrikalar.Location = new System.Drawing.Point(12, 9);
             this.lblKayitliFabrikalar.Name = "lblKayitliFabrikalar";
             this.lblKayitliFabrikalar.Size = new System.Drawing.Size(88, 13);
-            this.lblKayitliFabrikalar.TabIndex = 20;
+            this.lblKayitliFabrikalar.TabIndex = 29;
             this.lblKayitliFabrikalar.Text = "Fabrika Seçiniz...";
             // 
             // cmbKayitliFabrikalar
             // 
             this.cmbKayitliFabrikalar.FormattingEnabled = true;
-            this.cmbKayitliFabrikalar.Location = new System.Drawing.Point(11, 67);
+            this.cmbKayitliFabrikalar.Location = new System.Drawing.Point(15, 25);
             this.cmbKayitliFabrikalar.Name = "cmbKayitliFabrikalar";
             this.cmbKayitliFabrikalar.Size = new System.Drawing.Size(121, 21);
-            this.cmbKayitliFabrikalar.TabIndex = 19;
+            this.cmbKayitliFabrikalar.TabIndex = 28;
+            this.cmbKayitliFabrikalar.SelectedIndexChanged += new System.EventHandler(this.cmbKayitliFabrikalar_SelectedIndexChanged);
             // 
-            // lblFabrikaKayıtlıTesisler
+            // txtGuncelKanalSayisi
             // 
-            this.lblFabrikaKayıtlıTesisler.AutoSize = true;
-            this.lblFabrikaKayıtlıTesisler.Location = new System.Drawing.Point(9, 91);
-            this.lblFabrikaKayıtlıTesisler.Name = "lblFabrikaKayıtlıTesisler";
-            this.lblFabrikaKayıtlıTesisler.Size = new System.Drawing.Size(122, 13);
-            this.lblFabrikaKayıtlıTesisler.TabIndex = 18;
-            this.lblFabrikaKayıtlıTesisler.Text = "Fabrikaya Kayıtlı Tesisler";
+            this.txtGuncelKanalSayisi.Location = new System.Drawing.Point(15, 347);
+            this.txtGuncelKanalSayisi.Name = "txtGuncelKanalSayisi";
+            this.txtGuncelKanalSayisi.Size = new System.Drawing.Size(120, 20);
+            this.txtGuncelKanalSayisi.TabIndex = 30;
             // 
-            // gvTesisler
+            // txtYeniBantSayisi
             // 
-            this.gvTesisler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvTesisler.Location = new System.Drawing.Point(12, 107);
-            this.gvTesisler.Name = "gvTesisler";
-            this.gvTesisler.Size = new System.Drawing.Size(201, 150);
-            this.gvTesisler.TabIndex = 17;
+            this.txtYeniBantSayisi.Location = new System.Drawing.Point(12, 444);
+            this.txtYeniBantSayisi.Name = "txtYeniBantSayisi";
+            this.txtYeniBantSayisi.Size = new System.Drawing.Size(120, 20);
+            this.txtYeniBantSayisi.TabIndex = 31;
             // 
-            // label1
+            // lblGuncelKanalSayisi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Fabrika Seçiniz...";
+            this.lblGuncelKanalSayisi.AutoSize = true;
+            this.lblGuncelKanalSayisi.Location = new System.Drawing.Point(12, 331);
+            this.lblGuncelKanalSayisi.Name = "lblGuncelKanalSayisi";
+            this.lblGuncelKanalSayisi.Size = new System.Drawing.Size(136, 13);
+            this.lblGuncelKanalSayisi.TabIndex = 32;
+            this.lblGuncelKanalSayisi.Text = "Güncel kanal sayısı giriniz...";
             // 
-            // comboBox1
+            // lblYeniBantSayisi
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 28;
+            this.lblYeniBantSayisi.AutoSize = true;
+            this.lblYeniBantSayisi.Location = new System.Drawing.Point(12, 428);
+            this.lblYeniBantSayisi.Name = "lblYeniBantSayisi";
+            this.lblYeniBantSayisi.Size = new System.Drawing.Size(123, 13);
+            this.lblYeniBantSayisi.TabIndex = 33;
+            this.lblYeniBantSayisi.Text = "Yeni kanal sayısı giriniz...";
+            this.lblYeniBantSayisi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 411);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lblYeniTesisAdi);
-            this.Controls.Add(this.lblGuncelTesisAdi);
-            this.Controls.Add(this.txtYeniTesisAdi);
-            this.Controls.Add(this.txtGüncelTesisAdi);
-            this.Controls.Add(this.btnTesisGüncelle);
-            this.Controls.Add(this.btnTesisEkle);
-            this.Controls.Add(this.btnFabrikaSil);
+            this.ClientSize = new System.Drawing.Size(231, 476);
+            this.Controls.Add(this.lblYeniBantSayisi);
+            this.Controls.Add(this.lblGuncelKanalSayisi);
+            this.Controls.Add(this.txtYeniBantSayisi);
+            this.Controls.Add(this.txtGuncelKanalSayisi);
             this.Controls.Add(this.lblKayitliFabrikalar);
             this.Controls.Add(this.cmbKayitliFabrikalar);
-            this.Controls.Add(this.lblFabrikaKayıtlıTesisler);
-            this.Controls.Add(this.gvTesisler);
+            this.Controls.Add(this.lblYeniBantAdi);
+            this.Controls.Add(this.lblGuncelBantAdi);
+            this.Controls.Add(this.txtYeniBantAdi);
+            this.Controls.Add(this.txtGuncelBantAdi);
+            this.Controls.Add(this.btnBantGuncelle);
+            this.Controls.Add(this.btnBantEkle);
+            this.Controls.Add(this.btnBantSil);
+            this.Controls.Add(this.lblKayitliTesisler);
+            this.Controls.Add(this.cmbKayitliTesisler);
+            this.Controls.Add(this.lblKayitliBantlar);
+            this.Controls.Add(this.gvBantlar);
             this.Name = "BantForm";
             this.Text = "Bant İşlemleri";
-            ((System.ComponentModel.ISupportInitialize)(this.gvTesisler)).EndInit();
+            this.Load += new System.EventHandler(this.BantForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvBantlar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,18 +228,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblYeniTesisAdi;
-        private System.Windows.Forms.Label lblGuncelTesisAdi;
-        private System.Windows.Forms.TextBox txtYeniTesisAdi;
-        private System.Windows.Forms.TextBox txtGüncelTesisAdi;
-        private System.Windows.Forms.Button btnTesisGüncelle;
-        private System.Windows.Forms.Button btnTesisEkle;
-        private System.Windows.Forms.Button btnFabrikaSil;
+        private System.Windows.Forms.Label lblYeniBantAdi;
+        private System.Windows.Forms.Label lblGuncelBantAdi;
+        private System.Windows.Forms.TextBox txtYeniBantAdi;
+        private System.Windows.Forms.TextBox txtGuncelBantAdi;
+        private System.Windows.Forms.Button btnBantGuncelle;
+        private System.Windows.Forms.Button btnBantEkle;
+        private System.Windows.Forms.Button btnBantSil;
+        private System.Windows.Forms.Label lblKayitliTesisler;
+        private System.Windows.Forms.ComboBox cmbKayitliTesisler;
+        private System.Windows.Forms.Label lblKayitliBantlar;
+        private System.Windows.Forms.DataGridView gvBantlar;
         private System.Windows.Forms.Label lblKayitliFabrikalar;
         private System.Windows.Forms.ComboBox cmbKayitliFabrikalar;
-        private System.Windows.Forms.Label lblFabrikaKayıtlıTesisler;
-        private System.Windows.Forms.DataGridView gvTesisler;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtGuncelKanalSayisi;
+        private System.Windows.Forms.TextBox txtYeniBantSayisi;
+        private System.Windows.Forms.Label lblGuncelKanalSayisi;
+        private System.Windows.Forms.Label lblYeniBantSayisi;
     }
 }
