@@ -12,113 +12,65 @@ namespace Remote_Printer
 {
     public partial class TesisForm : Form
     {
-        private SQLiteConnection veritabaniBaglanti = new SQLiteConnection();
-        private SQLiteCommand veritabaniKomut;
-        private SQLiteDataReader veritabaniOkuyucu;
-        string connString = "Data Source=D:\\RemotePrinter\\Remote Printer\\Database\\remotePrinter.db";
+        veritabaniOperasyon veriOperasyon = new veritabaniOperasyon();
 
         public TesisForm()
         {
             InitializeComponent();
         }
 
+
+        private void TesisForm_Load(object sender, EventArgs e)
+        {
+            var fabrikaIsimleri = veriOperasyon.fabrikaGetir();
+
+            cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
+
+            btnTesisSil.Enabled = false;
+            btnTesisGuncelle.Enabled = false;
+
+            // Datagridview özelliklerini ayarla.
+            gvTesisler.MultiSelect = false;
+            gvTesisler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gvTesisler.ReadOnly = true;
+            gvTesisler.RowHeadersVisible = false;
+            gvTesisler.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvTesisler.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvTesisler.AllowUserToAddRows = false;
+            gvTesisler.AllowUserToDeleteRows = false;
+            gvTesisler.AllowUserToResizeRows = false;
+            gvTesisler.AutoResizeColumns();
+            gvTesisler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gvTesisler.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            gvTesisler.ColumnHeadersVisible = false;
+        }
+
         private void cmbKayitliFabrikalar_SelectedIndexChanged(object sender, EventArgs e)
         {
             string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
 
-            //MessageBox.Show(seciliFabrikaAdi);
-
-            tesisGetir(seciliFabrikaAdi);
+            veriOperasyon.tesisGetir(seciliFabrikaAdi,gvTesisler);
         }
 
-        /*
-         * Veritabanından tesis isimlerini getirir.
-         * */
-        private void tesisGetir(string fabrikaAdi)
-        {
-            veritabaniBaglanti.ConnectionString = connString;
 
-            veritabaniBaglanti.Open();
-
-            string sorgu = "SELECT * FROM Tesis WHERE fabrikaID = (SELECT fabrikaID FROM Fabrika WHERE fabrikaAdi = @fabrikaAdi)";
-
-            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
-            {
-                veritabaniKomut.Parameters.AddWithValue("@fabrikaAdi", fabrikaAdi);
-
-                DataTable datatable = new DataTable();
-                datatable.Load(veritabaniKomut.ExecuteReader());
-                gvTesisler.DataSource = datatable;
-            }
-            veritabaniBaglanti.Close();
-        }
-
-        private void TesisForm_Load(object sender, EventArgs e)
-        {
-            var fabrikaIsimleri = fabrikaGetir();
-
-            cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
-
-            gvTesisler.MultiSelect = false;
-            gvTesisler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gvTesisler.ReadOnly = true;
-            gvTesisler.ColumnHeadersVisible = false;
-            gvTesisler.RowHeadersVisible = false;
-        }
-
-        private string[] fabrikaGetir()
-        {
-            DataTable datatable = new DataTable();
-            
-            veritabaniBaglanti.ConnectionString = connString;
-
-            veritabaniBaglanti.Open();
-
-            string sorgu = "SELECT * FROM Fabrika";
-
-            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
-            {
-
-                datatable.Load(veritabaniKomut.ExecuteReader());
-            }
-            veritabaniBaglanti.Close();
-
-            var stringarr = datatable.AsEnumerable().Select(row => row.Field<string>("fabrikaAdi")).ToArray();
-
-            return stringarr;
-        }
-
-        /*
-         * Yeni tesis metin kutusuna girili tesis adını seçili fabrikanın altında veritabanına kaydeder.
-         * 
-         * YAPILACAK!
-         * Veritabanında kayıtlı tesis adı kontrolü yapılacak !
-         * **/
         private void btnTesisEkle_Click(object sender, EventArgs e)
         {
+            string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
+
             if (txtYeniTesisAdi.Text != "")
             {
-                string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
-
-                veritabaniBaglanti.ConnectionString = connString;
-
-                veritabaniBaglanti.Open();
-
-                string sorgu = "INSERT INTO Tesis (fabrikaID,tesisAdi) VALUES ((SELECT fabrikaID FROM Fabrika WHERE fabrikaAdi = @fabrikaAdi),@tesisAdi)";
-
-                using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+                if (veriOperasyon.tesisMevcut(this.txtYeniTesisAdi.Text, seciliFabrikaAdi) == false)
                 {
-                    veritabaniKomut.Parameters.AddWithValue("@fabrikaAdi", seciliFabrikaAdi);
-                    veritabaniKomut.Parameters.AddWithValue("@tesisAdi", txtYeniTesisAdi.Text);
+                    veriOperasyon.tesisEkle(txtYeniTesisAdi.Text, seciliFabrikaAdi);
 
-                    veritabaniKomut.ExecuteNonQuery();
+                    veriOperasyon.tesisGetir(seciliFabrikaAdi, gvTesisler);
+
+                    txtYeniTesisAdi.Clear();
                 }
-
-                veritabaniBaglanti.Close();
-
-                tesisGetir(seciliFabrikaAdi);
-
-                txtYeniTesisAdi.Clear();
+                else
+                {
+                    MessageBox.Show("Tesis zaten kayıtlı!");
+                }
             }
             else
             {
@@ -126,41 +78,35 @@ namespace Remote_Printer
             }
         }
 
-        private void btnFabrikaSil_Click(object sender, EventArgs e)
+        private void btnTesisSil_Click(object sender, EventArgs e)
         {
-            int fabrikaID;
-            int tesisID;
+            string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
 
             // listelenen tesislerden işaretli olanın indeksini döndürür.
-            int SeciliIndeks = gvTesisler.CurrentCell.RowIndex;
+            int seciliIndeks = gvTesisler.CurrentCell.RowIndex;
 
             // seçim yapılmış ise
-            if (SeciliIndeks >= 0)
+            if (seciliIndeks >= 0)
             {
-                // seçili satırdan fabrikaID al.
-                int.TryParse(gvTesisler.Rows[SeciliIndeks].Cells["fabrikaID"].Value.ToString(), out fabrikaID);
-                // seçili satırdan tesisID al.
-                int.TryParse(gvTesisler.Rows[SeciliIndeks].Cells["tesisID"].Value.ToString(), out tesisID);
+                DialogResult uyariPenceresi = MessageBox.Show("Silmek istediğiniz fabrikaya ait tesis, bant ve yazıcı bilgileri de silinecektir. Onaylıyor musunuz?","UYARI!",MessageBoxButtons.YesNo);
 
-                veritabaniBaglanti.ConnectionString = connString;
-
-                veritabaniBaglanti.Open();
-
-                string sorgu = "DELETE FROM Tesis WHERE fabrikaID = @fabrikaID AND tesisID = @silinecekTesisID";
-
-                using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+                if (uyariPenceresi == DialogResult.Yes)
                 {
-                    veritabaniKomut.Parameters.AddWithValue("@fabrikaID", fabrikaID);
-                    veritabaniKomut.Parameters.AddWithValue("@silinecekTesisID", tesisID);
+                    //MessageBox.Show(seciliIndeks.ToString());
 
-                    veritabaniKomut.ExecuteNonQuery();
+                    veriOperasyon.tesisSil(seciliIndeks, seciliFabrikaAdi);
+
+                    if (gvTesisler.RowCount == 0)
+                    {
+                        btnTesisSil.Enabled = false;
+                        btnTesisGuncelle.Enabled = false;
+                    }
                 }
-
-                veritabaniBaglanti.Close();
-
-                string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
-
-                tesisGetir(seciliFabrikaAdi);
+                else if (uyariPenceresi == DialogResult.No)
+                {
+ 
+                }
+                veriOperasyon.tesisGetir(seciliFabrikaAdi, gvTesisler);
             }
             // seçim yapılmamış ise
             else
@@ -170,9 +116,41 @@ namespace Remote_Printer
 
         }
 
-        private void btnTesisGüncelle_Click(object sender, EventArgs e)
+        private void btnTesisGuncelle_Click(object sender, EventArgs e)
         {
+            string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
 
+            int SeciliIndeks = gvTesisler.CurrentCell.RowIndex;
+
+            //int.TryParse(gvKayitliFabrikalar.Rows[SeciliIndeks].Cells["fabrikaID"].Value.ToString(), out fabrikaID);
+
+            if (this.txtGuncelTesisAdi.Text != "")
+            {
+                if (veriOperasyon.tesisMevcut(this.txtGuncelTesisAdi.Text, seciliFabrikaAdi) == false)
+                {
+                    veriOperasyon.tesisGuncelle(SeciliIndeks, seciliFabrikaAdi, this.txtGuncelTesisAdi.Text);
+
+                    //veriOperasyon.fabrikaGuncelle(SeciliIndeks, this.txtGuncelFabrikaAdi.Text);
+                    veriOperasyon.tesisGetir(seciliFabrikaAdi, gvTesisler);
+                }
+                else
+                {
+                    MessageBox.Show("Kayıt güncellenemiyor. Tesis ismi zaten kayıtlı!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Güncel tesis ismi giriniz!");
+            }
         }
+
+        private void gvTesisler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtGuncelTesisAdi.Text = gvTesisler.Rows[e.RowIndex].Cells["tesisAdi"].Value.ToString();
+            btnTesisGuncelle.Enabled = true;
+            btnTesisSil.Enabled = true;
+        }
+
+
     }
 }

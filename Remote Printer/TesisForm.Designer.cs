@@ -32,12 +32,12 @@
             this.gvTesisler = new System.Windows.Forms.DataGridView();
             this.cmbKayitliFabrikalar = new System.Windows.Forms.ComboBox();
             this.lblKayitliFabrikalar = new System.Windows.Forms.Label();
-            this.btnFabrikaSil = new System.Windows.Forms.Button();
+            this.btnTesisSil = new System.Windows.Forms.Button();
             this.lblYeniTesisAdi = new System.Windows.Forms.Label();
             this.lblGuncelTesisAdi = new System.Windows.Forms.Label();
             this.txtYeniTesisAdi = new System.Windows.Forms.TextBox();
-            this.txtGüncelTesisAdi = new System.Windows.Forms.TextBox();
-            this.btnTesisGüncelle = new System.Windows.Forms.Button();
+            this.txtGuncelTesisAdi = new System.Windows.Forms.TextBox();
+            this.btnTesisGuncelle = new System.Windows.Forms.Button();
             this.btnTesisEkle = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -61,6 +61,7 @@
             this.gvTesisler.Name = "gvTesisler";
             this.gvTesisler.Size = new System.Drawing.Size(201, 150);
             this.gvTesisler.TabIndex = 2;
+            this.gvTesisler.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvTesisler_CellClick);
             // 
             // cmbKayitliFabrikalar
             // 
@@ -80,15 +81,15 @@
             this.lblKayitliFabrikalar.TabIndex = 5;
             this.lblKayitliFabrikalar.Text = "Fabrika Seçiniz...";
             // 
-            // btnFabrikaSil
+            // btnTesisSil
             // 
-            this.btnFabrikaSil.Location = new System.Drawing.Point(139, 225);
-            this.btnFabrikaSil.Name = "btnFabrikaSil";
-            this.btnFabrikaSil.Size = new System.Drawing.Size(75, 23);
-            this.btnFabrikaSil.TabIndex = 6;
-            this.btnFabrikaSil.Text = "Kayıt Sil";
-            this.btnFabrikaSil.UseVisualStyleBackColor = true;
-            this.btnFabrikaSil.Click += new System.EventHandler(this.btnFabrikaSil_Click);
+            this.btnTesisSil.Location = new System.Drawing.Point(139, 225);
+            this.btnTesisSil.Name = "btnTesisSil";
+            this.btnTesisSil.Size = new System.Drawing.Size(75, 23);
+            this.btnTesisSil.TabIndex = 6;
+            this.btnTesisSil.Text = "Kayıt Sil";
+            this.btnTesisSil.UseVisualStyleBackColor = true;
+            this.btnTesisSil.Click += new System.EventHandler(this.btnTesisSil_Click);
             // 
             // lblYeniTesisAdi
             // 
@@ -116,22 +117,22 @@
             this.txtYeniTesisAdi.Size = new System.Drawing.Size(120, 20);
             this.txtYeniTesisAdi.TabIndex = 14;
             // 
-            // txtGüncelTesisAdi
+            // txtGuncelTesisAdi
             // 
-            this.txtGüncelTesisAdi.Location = new System.Drawing.Point(13, 283);
-            this.txtGüncelTesisAdi.Name = "txtGüncelTesisAdi";
-            this.txtGüncelTesisAdi.Size = new System.Drawing.Size(120, 20);
-            this.txtGüncelTesisAdi.TabIndex = 13;
+            this.txtGuncelTesisAdi.Location = new System.Drawing.Point(13, 283);
+            this.txtGuncelTesisAdi.Name = "txtGuncelTesisAdi";
+            this.txtGuncelTesisAdi.Size = new System.Drawing.Size(120, 20);
+            this.txtGuncelTesisAdi.TabIndex = 13;
             // 
-            // btnTesisGüncelle
+            // btnTesisGuncelle
             // 
-            this.btnTesisGüncelle.Location = new System.Drawing.Point(139, 281);
-            this.btnTesisGüncelle.Name = "btnTesisGüncelle";
-            this.btnTesisGüncelle.Size = new System.Drawing.Size(75, 23);
-            this.btnTesisGüncelle.TabIndex = 12;
-            this.btnTesisGüncelle.Text = "Güncelle";
-            this.btnTesisGüncelle.UseVisualStyleBackColor = true;
-            this.btnTesisGüncelle.Click += new System.EventHandler(this.btnTesisGüncelle_Click);
+            this.btnTesisGuncelle.Location = new System.Drawing.Point(139, 281);
+            this.btnTesisGuncelle.Name = "btnTesisGuncelle";
+            this.btnTesisGuncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnTesisGuncelle.TabIndex = 12;
+            this.btnTesisGuncelle.Text = "Güncelle";
+            this.btnTesisGuncelle.UseVisualStyleBackColor = true;
+            this.btnTesisGuncelle.Click += new System.EventHandler(this.btnTesisGuncelle_Click);
             // 
             // btnTesisEkle
             // 
@@ -179,10 +180,10 @@
             this.Controls.Add(this.lblYeniTesisAdi);
             this.Controls.Add(this.lblGuncelTesisAdi);
             this.Controls.Add(this.txtYeniTesisAdi);
-            this.Controls.Add(this.txtGüncelTesisAdi);
-            this.Controls.Add(this.btnTesisGüncelle);
+            this.Controls.Add(this.txtGuncelTesisAdi);
+            this.Controls.Add(this.btnTesisGuncelle);
             this.Controls.Add(this.btnTesisEkle);
-            this.Controls.Add(this.btnFabrikaSil);
+            this.Controls.Add(this.btnTesisSil);
             this.Controls.Add(this.lblKayitliFabrikalar);
             this.Controls.Add(this.cmbKayitliFabrikalar);
             this.Controls.Add(this.lblFabrikaKayıtlıTesisler);
@@ -203,12 +204,12 @@
         private System.Windows.Forms.DataGridView gvTesisler;
         private System.Windows.Forms.ComboBox cmbKayitliFabrikalar;
         private System.Windows.Forms.Label lblKayitliFabrikalar;
-        private System.Windows.Forms.Button btnFabrikaSil;
+        private System.Windows.Forms.Button btnTesisSil;
         private System.Windows.Forms.Label lblYeniTesisAdi;
         private System.Windows.Forms.Label lblGuncelTesisAdi;
         private System.Windows.Forms.TextBox txtYeniTesisAdi;
-        private System.Windows.Forms.TextBox txtGüncelTesisAdi;
-        private System.Windows.Forms.Button btnTesisGüncelle;
+        private System.Windows.Forms.TextBox txtGuncelTesisAdi;
+        private System.Windows.Forms.Button btnTesisGuncelle;
         private System.Windows.Forms.Button btnTesisEkle;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;

@@ -118,7 +118,7 @@
     <Compile Include="TesisForm.Designer.cs">
       <DependentUpon>TesisForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="veritabani.cs" />
+    <Compile Include="veritabaniOperasyon.cs" />
     <Compile Include="YaziciForm.cs">
       <SubType>Form</SubType>
     </Compile>
