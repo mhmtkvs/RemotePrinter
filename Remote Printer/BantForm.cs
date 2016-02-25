@@ -81,7 +81,7 @@ namespace Remote_Printer
 
             if (txtYeniBantAdi.Text != "" && txtYeniBantSayisi.Text !="")
             {
-                if (true)
+                if (veriOperasyon.bantMevcut(seciliFabrikaAdi,seciliTesisAdi,this.txtYeniBantAdi.Text) == false)
                 {
                     veriOperasyon.bantEkle(seciliFabrikaAdi, seciliTesisAdi, txtYeniBantAdi.Text, txtYeniBantSayisi.Text);
 
@@ -92,12 +92,41 @@ namespace Remote_Printer
                 }
                 else
                 {
-                    MessageBox.Show("Tesis zaten kayıtlı!");
+                    MessageBox.Show("Bant zaten kayıtlı!");
                 }
             }
             else
             {
                 MessageBox.Show("Bant adı veya kanal sayısı boş bırakılamaz!");
+            }
+        }
+
+        private void btnBantGuncelle_Click(object sender, EventArgs e)
+        {
+            string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
+            string seciliTesisAdi = cmbKayitliTesisler.SelectedItem.ToString();
+
+            int SeciliIndeks = gvBantlar.CurrentCell.RowIndex;
+
+            //int.TryParse(gvKayitliFabrikalar.Rows[SeciliIndeks].Cells["fabrikaID"].Value.ToString(), out fabrikaID);
+
+            if (this.txtGuncelBantAdi.Text != "" && txtGuncelKanalSayisi.Text != "")
+            {
+                if (veriOperasyon.bantMevcut(seciliFabrikaAdi,seciliTesisAdi,this.txtGuncelBantAdi.Text) == false)
+                {
+                    // bant güncelle
+
+                    //veriOperasyon.fabrikaGuncelle(SeciliIndeks, this.txtGuncelFabrikaAdi.Text);
+                    veriOperasyon.bantGetir(seciliFabrikaAdi, seciliTesisAdi, gvBantlar);
+                }
+                else
+                {
+                    MessageBox.Show("Kayıt güncellenemiyor. Bant ismi zaten kayıtlı!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Güncel bant ismi giriniz!");
             }
         }
     }

@@ -89,6 +89,7 @@
             this.btnBantGuncelle.TabIndex = 23;
             this.btnBantGuncelle.Text = "Güncelle";
             this.btnBantGuncelle.UseVisualStyleBackColor = true;
+            this.btnBantGuncelle.Click += new System.EventHandler(this.btnBantGuncelle_Click);
             // 
             // btnBantEkle
             // 

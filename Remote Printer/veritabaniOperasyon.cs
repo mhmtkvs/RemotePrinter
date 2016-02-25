@@ -364,6 +364,30 @@ namespace Remote_Printer
             veritabaniBaglanti.Close();
         }
 
+        public bool bantMevcut(string _fabrikaAdi, string _tesisAdi, string _eklenecekBant)
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT bantAdi,kanalSayisi FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _tesisAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+            veritabaniBaglanti.Close();
+
+            var bantAdlari = datatable.AsEnumerable().Select(row => row.Field<string>("bantAdi")).ToArray();
+
+            return bantAdlari.Contains(_eklenecekBant);
+        }
+
         public void bantEkle(string _fabrikaAdi, string _tesisAdi, string _yeniBantAdi, string _yeniKanalSayisi)
         {
 
@@ -387,5 +411,32 @@ namespace Remote_Printer
             veritabaniBaglanti.Close();
         }
 
+        public void bantGuncelle(int _bantIndeks, string _seciliFabrika, string _seciliTesis, string _guncelBantAdi, string _guncelKanalSayisi)
+        {
+            int tesisID;
+            int bantID;
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT * FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi)";
+
+            DataTable datatable = new DataTable();
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _seciliFabrika);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _seciliTesis);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            int.TryParse(datatable.Rows[_bantIndeks]["tesisID"].ToString(), out tesisID);
+            int.TryParse(datatable.Rows[_bantIndeks]["bantID"].ToString(), out bantID);
+
+            sorgu = "UPDATE Bant SET bantAdi=@guncelBant, kanalSayisi=@guncelKanalSayisi WHERE bantID=@bantID AND tesisID=@tesisID";
+
+        }
     }
 }
