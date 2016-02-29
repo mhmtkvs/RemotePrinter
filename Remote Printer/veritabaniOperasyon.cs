@@ -436,7 +436,55 @@ namespace Remote_Printer
             int.TryParse(datatable.Rows[_bantIndeks]["bantID"].ToString(), out bantID);
 
             sorgu = "UPDATE Bant SET bantAdi=@guncelBant, kanalSayisi=@guncelKanalSayisi WHERE bantID=@bantID AND tesisID=@tesisID";
+            
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@guncelBant", _guncelBantAdi);
+                veritabaniKomut.Parameters.AddWithValue("@guncelKanalSayisi", _guncelKanalSayisi);
+                veritabaniKomut.Parameters.AddWithValue("@bantID", bantID);
+                veritabaniKomut.Parameters.AddWithValue("@tesisID", tesisID);
 
+                veritabaniKomut.ExecuteNonQuery();
+            }
+
+            veritabaniBaglanti.Close();
+        }
+
+        public void bantSil(int _bantIndeks, string _seciliFabrika, string _seciliTesis)
+        {
+            int tesisID;
+            int bantID;
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT * FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi)";
+
+            DataTable datatable = new DataTable();
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _seciliFabrika);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _seciliTesis);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            int.TryParse(datatable.Rows[_bantIndeks]["tesisID"].ToString(), out tesisID);
+            int.TryParse(datatable.Rows[_bantIndeks]["bantID"].ToString(), out bantID);
+
+            sorgu = "DELETE FROM Bant WHERE tesisID = @tesisID AND bantID = @silinecekBantID";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@tesisID", tesisID);
+                veritabaniKomut.Parameters.AddWithValue("@silinecekBantID", bantID);
+
+                veritabaniKomut.ExecuteNonQuery();
+            }
+
+            veritabaniBaglanti.Close();
         }
     }
 }

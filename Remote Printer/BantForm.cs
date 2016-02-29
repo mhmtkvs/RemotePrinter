@@ -110,12 +110,12 @@ namespace Remote_Printer
 
             //int.TryParse(gvKayitliFabrikalar.Rows[SeciliIndeks].Cells["fabrikaID"].Value.ToString(), out fabrikaID);
 
-            if (this.txtGuncelBantAdi.Text != "" && txtGuncelKanalSayisi.Text != "")
+            if (this.txtGuncelBantAdi.Text != "" && this.txtGuncelKanalSayisi.Text != "")
             {
                 if (veriOperasyon.bantMevcut(seciliFabrikaAdi,seciliTesisAdi,this.txtGuncelBantAdi.Text) == false)
                 {
                     // bant güncelle
-
+                    veriOperasyon.bantGuncelle(SeciliIndeks, seciliFabrikaAdi, seciliTesisAdi, this.txtGuncelBantAdi.Text, this.txtGuncelKanalSayisi.Text);
                     //veriOperasyon.fabrikaGuncelle(SeciliIndeks, this.txtGuncelFabrikaAdi.Text);
                     veriOperasyon.bantGetir(seciliFabrikaAdi, seciliTesisAdi, gvBantlar);
                 }
@@ -127,6 +127,52 @@ namespace Remote_Printer
             else
             {
                 MessageBox.Show("Güncel bant ismi giriniz!");
+            }
+        }
+
+        private void gvBantlar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtGuncelBantAdi.Text = gvBantlar.Rows[e.RowIndex].Cells["bantAdi"].Value.ToString();
+            txtGuncelKanalSayisi.Text = gvBantlar.Rows[e.RowIndex].Cells["kanalSayisi"].Value.ToString();
+            //txtGuncelKanalSayisi.Text = gvBantlar.Rows
+            btnBantGuncelle.Enabled = true;
+            btnBantSil.Enabled = true;
+        }
+
+        private void btnBantSil_Click(object sender, EventArgs e)
+        {
+            string seciliFabrikaAdi = cmbKayitliFabrikalar.SelectedItem.ToString();
+            string seciliTesisAdi = cmbKayitliTesisler.SelectedItem.ToString();
+
+            // listelenen tesislerden işaretli olanın indeksini döndürür.
+            int seciliIndeks = gvBantlar.CurrentCell.RowIndex;
+
+            // seçim yapılmış ise
+            if (seciliIndeks >= 0)
+            {
+                DialogResult uyariPenceresi = MessageBox.Show("Silmek istediğiniz fabrikaya ait tesis, bant ve yazıcı bilgileri de silinecektir. Onaylıyor musunuz?", "UYARI!", MessageBoxButtons.YesNo);
+
+                if (uyariPenceresi == DialogResult.Yes)
+                {
+                    //bant sil 
+                    veriOperasyon.bantSil(seciliIndeks, seciliFabrikaAdi, seciliTesisAdi);
+
+                    if (gvBantlar.RowCount == 0)
+                    {
+                        btnBantSil.Enabled = false;
+                        btnBantGuncelle.Enabled = false;
+                    }
+                }
+                else if (uyariPenceresi == DialogResult.No)
+                {
+
+                }
+                veriOperasyon.bantGetir(seciliFabrikaAdi, seciliTesisAdi, gvBantlar);
+            }
+            // seçim yapılmamış ise
+            else
+            {
+                MessageBox.Show("Listeden tesis seçiniz!");
             }
         }
     }

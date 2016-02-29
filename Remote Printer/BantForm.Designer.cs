@@ -109,6 +109,7 @@
             this.btnBantSil.TabIndex = 21;
             this.btnBantSil.Text = "Kayıt Sil";
             this.btnBantSil.UseVisualStyleBackColor = true;
+            this.btnBantSil.Click += new System.EventHandler(this.btnBantSil_Click);
             // 
             // lblKayitliTesisler
             // 
@@ -144,6 +145,7 @@
             this.gvBantlar.Name = "gvBantlar";
             this.gvBantlar.Size = new System.Drawing.Size(201, 150);
             this.gvBantlar.TabIndex = 17;
+            this.gvBantlar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvBantlar_CellContentClick);
             // 
             // lblKayitliFabrikalar
             // 
