@@ -182,8 +182,8 @@ namespace Remote_Printer
         }
 
         /*
- * Veritabanından tesis isimlerini getirir.
- * */
+         * Veritabanından tesis isimlerini getirir.
+         * */
         public void tesisGetir(string _fabrikaAdi, DataGridView _tesisler)
         {
             veritabaniBaglanti.ConnectionString = baglantiCumlesi;
@@ -225,7 +225,6 @@ namespace Remote_Printer
 
             return stringarr;
         }
-
 
         public bool tesisMevcut(string _tesisAdi, string _seciliFabrikaAdi)
         {
@@ -364,6 +363,31 @@ namespace Remote_Printer
             veritabaniBaglanti.Close();
         }
 
+        public string[] bantGetir(string _fabrikaAdi, string _tesisAdi)
+        {
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            DataTable datatable = new DataTable();
+
+            string sorgu = "SELECT bantAdi FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrikaAdi) AND tesisAdi = @seciliTesisAdi)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrikaAdi", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesisAdi", _tesisAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+            veritabaniBaglanti.Close();
+
+            var stringarr = datatable.AsEnumerable().Select(row => row.Field<string>("bantAdi")).ToArray();
+
+            return stringarr;
+ 
+        }
+
         public bool bantMevcut(string _fabrikaAdi, string _tesisAdi, string _eklenecekBant)
         {
             DataTable datatable = new DataTable();
@@ -384,6 +408,9 @@ namespace Remote_Printer
             veritabaniBaglanti.Close();
 
             var bantAdlari = datatable.AsEnumerable().Select(row => row.Field<string>("bantAdi")).ToArray();
+            //var kanalSayilari = datatable.AsEnumerable().Select(row => row.Field<string>("kanalSayisi")).ToArray();
+
+            bool bantAdiMevcut = bantAdlari.Contains(_eklenecekBant);
 
             return bantAdlari.Contains(_eklenecekBant);
         }
@@ -391,7 +418,7 @@ namespace Remote_Printer
         public void bantEkle(string _fabrikaAdi, string _tesisAdi, string _yeniBantAdi, string _yeniKanalSayisi)
         {
 
-            MessageBox.Show(_fabrikaAdi + " " + _tesisAdi + " " + _yeniBantAdi + " " + _yeniKanalSayisi);
+            //MessageBox.Show(_fabrikaAdi + " " + _tesisAdi + " " + _yeniBantAdi + " " + _yeniKanalSayisi);
 
             veritabaniBaglanti.ConnectionString = baglantiCumlesi;
 
@@ -480,6 +507,174 @@ namespace Remote_Printer
             {
                 veritabaniKomut.Parameters.AddWithValue("@tesisID", tesisID);
                 veritabaniKomut.Parameters.AddWithValue("@silinecekBantID", bantID);
+
+                veritabaniKomut.ExecuteNonQuery();
+            }
+
+            veritabaniBaglanti.Close();
+        }
+
+        public void yaziciGetir(string _fabrikaAdi, string _tesisAdi, string _bantAdi, DataGridView _yazicilar)
+        {
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT yaziciAdi,ipAdres,portNo,comID FROM Yazici WHERE bantID = (SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant)";
+            
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+
+                DataTable datatable = new DataTable();
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+                
+                _yazicilar.DataSource = datatable;
+            }
+            veritabaniBaglanti.Close();
+        }
+
+        public bool yaziciMevcut(string _fabrikaAdi, string _tesisAdi, string _BantAdi, string _eklenecekYazici)
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT yaziciAdi FROM Yazici WHERE bantID = (SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant)";
+            
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _BantAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+            veritabaniBaglanti.Close();
+
+            var yaziciAdlari = datatable.AsEnumerable().Select(row => row.Field<string>("yaziciAdi")).ToArray();
+
+            return yaziciAdlari.Contains(_eklenecekYazici);
+        }
+
+        public void yaziciEkle(string _fabrikaAdi,
+                               string _tesisAdi,
+                               string _bantAdi,
+                               string _yeniYaziciAdi,
+                               string _yeniIPAdres,
+                               string _yeniPortNo,
+                               string _yeniCOMID)
+        {
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "INSERT INTO Yazici (bantID,yaziciAdi,ipAdres,portNo,comID) VALUES ((SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant),@yaziciAdi, @ipAdres, @portNo, @comID)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+                veritabaniKomut.Parameters.AddWithValue("@yaziciAdi", _yeniYaziciAdi);
+                veritabaniKomut.Parameters.AddWithValue("@ipAdres", _yeniIPAdres);
+                veritabaniKomut.Parameters.AddWithValue("@portNo", _yeniPortNo);
+                veritabaniKomut.Parameters.AddWithValue("@comID", _yeniCOMID);
+                
+                veritabaniKomut.ExecuteNonQuery();
+            }
+            veritabaniBaglanti.Close();
+        }
+
+
+        public void yaziciGuncelle(int _yaziciIndeks,
+                                   string _fabrikaAdi,
+                                   string _tesisAdi,
+                                   string _bantAdi,
+                                   string _yeniYaziciAdi,
+                                   string _yeniIPAdres,
+                                   string _yeniPortNo,
+                                   string _yeniCOMID)
+        {
+            int bantID;
+            int yaziciID;
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT * FROM Yazici WHERE bantID = (SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant)";
+          
+            DataTable datatable = new DataTable();
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            int.TryParse(datatable.Rows[_yaziciIndeks]["bantID"].ToString(), out bantID);
+            int.TryParse(datatable.Rows[_yaziciIndeks]["yaziciID"].ToString(), out yaziciID);
+
+            sorgu = "UPDATE Yazici SET yaziciAdi=@yaziciAdi, ipAdres = @ipAdres, portNo = @portNo, comID = @comID WHERE yaziciID=@yaziciID AND bantID=@bantID";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@yaziciAdi", _yeniYaziciAdi);
+                veritabaniKomut.Parameters.AddWithValue("@ipAdres", _yeniIPAdres);
+                veritabaniKomut.Parameters.AddWithValue("@portNo", _yeniPortNo);
+                veritabaniKomut.Parameters.AddWithValue("@comID", _yeniCOMID);
+                veritabaniKomut.Parameters.AddWithValue("@yaziciID", yaziciID);
+                veritabaniKomut.Parameters.AddWithValue("@bantID", bantID);
+
+                veritabaniKomut.ExecuteNonQuery();
+            }
+
+            veritabaniBaglanti.Close();
+        }
+        
+        public void yaziciSil(int _yaziciIndeks,
+                              string _fabrikaAdi,
+                              string _tesisAdi,
+                              string _bantAdi)
+        {
+            int bantID;
+            int yaziciID;
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT * FROM Yazici WHERE bantID = (SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant)";
+
+            DataTable datatable = new DataTable();
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            int.TryParse(datatable.Rows[_yaziciIndeks]["bantID"].ToString(), out bantID);
+            int.TryParse(datatable.Rows[_yaziciIndeks]["yaziciID"].ToString(), out yaziciID);
+
+            sorgu = "DELETE FROM Yazici WHERE bantID = @bantID AND yaziciID = @silinecekyaziciID";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@bantID", bantID);
+                veritabaniKomut.Parameters.AddWithValue("@silinecekyaziciID", yaziciID);
 
                 veritabaniKomut.ExecuteNonQuery();
             }

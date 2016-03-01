@@ -50,18 +50,18 @@ namespace Remote_Printer
 
         private void cmbKayitliFabrikalar_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            cmbKayitliTesisler.Enabled = true;
-
             string seciliFabrika = cmbKayitliFabrikalar.SelectedItem.ToString();
 
             var kayitliTesisler = veriOperasyon.tesisGetir(seciliFabrika);
 
-            cmbKayitliTesisler.Items.Clear();
-            cmbKayitliTesisler.Items.AddRange(kayitliTesisler);
-
-            // varsayılan olan seçili fabrikanın ilk tesisini seçiyor.
-            cmbKayitliTesisler.SelectedIndex = 0;
+            if (kayitliTesisler.Count() > 0)
+            {
+                cmbKayitliTesisler.Enabled = true;
+                cmbKayitliTesisler.Items.Clear();
+                cmbKayitliTesisler.Items.AddRange(kayitliTesisler);
+                // varsayılan olan seçili fabrikanın ilk tesisini seçiyor.
+                cmbKayitliTesisler.SelectedIndex = 0;
+            }
         }
 
         private void cmbKayitliTesisler_SelectedIndexChanged(object sender, EventArgs e)
@@ -157,6 +157,8 @@ namespace Remote_Printer
                     //bant sil 
                     veriOperasyon.bantSil(seciliIndeks, seciliFabrikaAdi, seciliTesisAdi);
 
+                    veriOperasyon.bantGetir(seciliFabrikaAdi, seciliTesisAdi, gvBantlar);
+
                     if (gvBantlar.RowCount == 0)
                     {
                         btnBantSil.Enabled = false;
@@ -167,7 +169,7 @@ namespace Remote_Printer
                 {
 
                 }
-                veriOperasyon.bantGetir(seciliFabrikaAdi, seciliTesisAdi, gvBantlar);
+
             }
             // seçim yapılmamış ise
             else

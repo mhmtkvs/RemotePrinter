@@ -134,9 +134,9 @@
             this.lblKayitliBantlar.AutoSize = true;
             this.lblKayitliBantlar.Location = new System.Drawing.Point(12, 89);
             this.lblKayitliBantlar.Name = "lblKayitliBantlar";
-            this.lblKayitliBantlar.Size = new System.Drawing.Size(104, 13);
+            this.lblKayitliBantlar.Size = new System.Drawing.Size(110, 13);
             this.lblKayitliBantlar.TabIndex = 18;
-            this.lblKayitliBantlar.Text = "Tesise Kayıtlı Bantlar";
+            this.lblKayitliBantlar.Text = "Sisteme Kayıtlı Bantlar";
             // 
             // gvBantlar
             // 
@@ -221,6 +221,7 @@
             this.Controls.Add(this.lblKayitliBantlar);
             this.Controls.Add(this.gvBantlar);
             this.Name = "BantForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bant İşlemleri";
             this.Load += new System.EventHandler(this.BantForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvBantlar)).EndInit();

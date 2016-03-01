@@ -50,9 +50,9 @@
             this.lblFabrikaKayıtlıTesisler.AutoSize = true;
             this.lblFabrikaKayıtlıTesisler.Location = new System.Drawing.Point(10, 53);
             this.lblFabrikaKayıtlıTesisler.Name = "lblFabrikaKayıtlıTesisler";
-            this.lblFabrikaKayıtlıTesisler.Size = new System.Drawing.Size(122, 13);
+            this.lblFabrikaKayıtlıTesisler.Size = new System.Drawing.Size(113, 13);
             this.lblFabrikaKayıtlıTesisler.TabIndex = 3;
-            this.lblFabrikaKayıtlıTesisler.Text = "Fabrikaya Kayıtlı Tesisler";
+            this.lblFabrikaKayıtlıTesisler.Text = "Sisteme Kayıtlı Tesisler";
             // 
             // gvTesisler
             // 
@@ -190,6 +190,7 @@
             this.Controls.Add(this.gvTesisler);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "TesisForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tesis İşlemleri";
             this.Load += new System.EventHandler(this.TesisForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvTesisler)).EndInit();

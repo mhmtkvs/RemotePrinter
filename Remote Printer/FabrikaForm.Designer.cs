@@ -172,6 +172,7 @@
             this.Controls.Add(this.gvKayitliFabrikalar);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "FabrikaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fabrika İşlemleri";
             this.Load += new System.EventHandler(this.FabrikaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvKayitliFabrikalar)).EndInit();

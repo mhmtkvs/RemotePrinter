@@ -100,6 +100,8 @@ namespace Remote_Printer
 
                     veriOperasyon.tesisSil(seciliIndeks, seciliFabrikaAdi);
 
+                    veriOperasyon.tesisGetir(seciliFabrikaAdi, gvTesisler);
+
                     if (gvTesisler.RowCount == 0)
                     {
                         btnTesisSil.Enabled = false;
@@ -110,7 +112,7 @@ namespace Remote_Printer
                 {
  
                 }
-                veriOperasyon.tesisGetir(seciliFabrikaAdi, gvTesisler);
+
             }
             // seçim yapılmamış ise
             else
