@@ -9,15 +9,15 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 
+
+
 namespace Remote_Printer
 {
     public partial class AnaForm : Form
     {
+        private const int KANAL_SAYISI = 10;
 
-        private SQLiteConnection veritabaniBaglanti;
-        private SQLiteCommand veritabaniKomut;
-        private SQLiteDataReader veritabaniOkuyucu;
-        string connString = "Data Source=D:\\Remote-Printer\\RemotePrinter\\Remote Printer\\Database\\remotePrinter.db";
+        veritabaniOperasyon veriOperasyon = new veritabaniOperasyon();
 
         public AnaForm()
         {
@@ -28,9 +28,50 @@ namespace Remote_Printer
         {
             //string dosyayolu = Application.ExecutablePath.ToString();
             //fabrikaGetir();
+            this.gvKanal.MultiSelect = false;
+            this.gvKanal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.gvKanal.RowHeadersVisible = false;
+            this.gvKanal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.gvKanal.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.gvKanal.AllowUserToAddRows = false;
+            this.gvKanal.AllowUserToDeleteRows = false;
+            this.gvKanal.AllowUserToResizeRows = false;
+            this.gvKanal.AllowUserToResizeColumns = false;
+            this.gvKanal.AutoResizeColumns();
+            this.gvKanal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvKanal.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            this.gvKanal.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+
+            this.gvKanal.ColumnCount = 8;
+
+            this.gvKanal.Columns[0].Name = "Kombinasyon Barkod Kodu";
+            this.gvKanal.Columns[1].Name = "Ürün Adı";
+            this.gvKanal.Columns[2].Name = "Ürün Kodu";
+            this.gvKanal.Columns[3].Name = "Barkod Kodu";
+            this.gvKanal.Columns[4].Name = "Personel Sicil No";
+            this.gvKanal.Columns[5].Name = "Ton";
+            this.gvKanal.Columns[6].Name = "Kalibre";
+            this.gvKanal.Columns[7].Name = "Üretim Tarihi";
+
+            DataGridViewButtonColumn webServis = new DataGridViewButtonColumn();
+            this.gvKanal.Columns.Insert(8, webServis);
+
+            webServis.Text = "Veri";
+
+            webServis.UseColumnTextForButtonValue = true;
 
 
-        }
+            for(int i = 0; i < KANAL_SAYISI; i++)
+            {
+                this.gvKanal.Rows.Add("", "", "", "", "", "", "", "");
+            }
+
+            foreach (DataGridViewRow satir in gvKanal.Rows)
+            {
+                satir.Height = 32;
+            }
+
+     }
 
         private void fabrikaİşlemleriToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -56,24 +97,13 @@ namespace Remote_Printer
             yaziciIslemleri.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void gvKanal_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ServiceReference1.Service1Client servis = new ServiceReference1.Service1Client();
-
-            string returnString;
-
-            returnString = servis.GetData(txtService.Text);
-
-            MessageBox.Show(returnString);
-
+            if (e.ColumnIndex == 8)
+            {
+                MessageBox.Show((e.RowIndex + 1) + "  Row  " + (e.ColumnIndex + 1) + "  Column button clicked ");
+            }
         }
-
-
-
-        
-
-
-
 
     }
 }
