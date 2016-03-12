@@ -44,3 +44,6 @@ D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.Properties.Resource
 D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.TesisForm.resources
 D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote_Printer.YaziciForm.resources
 D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csproj.GenerateResource.Cache
+C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
+C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
+C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
