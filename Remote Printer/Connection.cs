@@ -13,13 +13,14 @@ using System.Threading;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Reflection;
-using System.Timers;
-using Timer = System.Timers.Timer;
+
 
 namespace Ethernet_Serial_Connection
 {
     class Connection
     {
+        #region variables
+
         public TcpClient clientConnection = null;
         public NetworkStream networkStream = null;
         public bool EthDisconnected;
@@ -29,12 +30,42 @@ namespace Ethernet_Serial_Connection
         public UInt16 ethBufferHead = 0;
         public UInt16 ethBufferTail = 0;
         public byte[] SendBuffer = new byte[32];
+        public string ipAddress = "";
+        public int comPort;
 
-        public bool EthernetConnection(string hostName, int comPort)
+        #endregion
+
+        #region SetGetFunctions
+
+        public void setIpAddress(string arg_IPAddress)
+        {
+            ipAddress = arg_IPAddress;
+        }
+
+        public void setComPort(int arg_COM)
+        {
+            comPort = arg_COM;
+        }
+
+        public string getIpAddress()
+        {
+            return ipAddress;
+        }
+
+        public int getComPort()
+        {
+            return comPort;
+        }
+
+        #endregion
+
+        #region ConnectionFunctions
+
+        public bool EthernetConnection()
         {
             try
             {
-                clientConnection = new TcpClient(hostName, comPort);
+                clientConnection = new TcpClient(ipAddress, comPort);
             }
             catch
             {
@@ -48,7 +79,7 @@ namespace Ethernet_Serial_Connection
             thReadEthernet.Start();
 
             //timerEthernet kullanımı yapmaya uğraşılacak.
-      
+
             return true;
         }
 
@@ -66,6 +97,10 @@ namespace Ethernet_Serial_Connection
                 return;
             }
         }
+
+        #endregion
+
+        #region SendGetMessageFunctions
 
         public void getMessage()
         {
@@ -101,11 +136,13 @@ namespace Ethernet_Serial_Connection
             }
         }
 
+        #endregion
+
         public void opening() //bağlantı kurulduğunda yapılması gereken işlemler bu fonksiyon ile yapılacak.
         {
         }
         public void closing() //bağlantı kapatıldığında yapılması gereken işlemler bu fonksiyon ile yapılacak.
-        { 
+        {
         }
     }
 
@@ -251,7 +288,7 @@ namespace Ethernet_Serial_Connection
             {
                 bufferState = 0;
             }
-           
+
         }
 
         private void Control_endOfFrameState()
@@ -420,11 +457,11 @@ namespace Ethernet_Serial_Connection
 
             int i = 0;
 
-                tempBufferedData[DataCounter] = Printer.ethBuffer[Printer.ethBufferTail];
-                Printer.ethBufferTail = (UInt16)((Printer.ethBufferTail + 1) & 0x1FF);
+            tempBufferedData[DataCounter] = Printer.ethBuffer[Printer.ethBufferTail];
+            Printer.ethBufferTail = (UInt16)((Printer.ethBufferTail + 1) & 0x1FF);
 
-                DataCounter = (byte)((DataCounter + 1) & 0x7F);
-                BufferedDataLength = (byte)(DataCounter - 3);
+            DataCounter = (byte)((DataCounter + 1) & 0x7F);
+            BufferedDataLength = (byte)(DataCounter - 3);
 
             if (Printer.ethBufferHead != Printer.ethBufferTail)
             {
