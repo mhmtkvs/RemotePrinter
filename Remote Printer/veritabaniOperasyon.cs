@@ -537,6 +537,82 @@ namespace Remote_Printer
             veritabaniBaglanti.Close();
         }
 
+        public string[] yaziciGetir(string _fabrikaAdi, string _tesisAdi, string _bantAdi)
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT yaziciAdi,ipAdres,portNo,comID,yaziciTipi FROM Yazici WHERE bantID = (SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant)";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+
+
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            veritabaniBaglanti.Close();
+
+            var stringarr = datatable.AsEnumerable().Select(row => row.Field<string>("YaziciAdi")).ToArray();
+
+            return stringarr;
+        }
+
+        public DataTable yaziciTablosuGetir()
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT * FROM Yazici";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                //veritabaniKomut.Parameters.AddWithValue("@seciliFabrika", _fabrikaAdi);
+                //veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                //veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+                
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            veritabaniBaglanti.Close();
+
+            return datatable;
+        }
+
+        public int yaziciIDGetir(string _yaziciAdi)
+        {
+            DataTable datatable = new DataTable();
+
+            veritabaniBaglanti.ConnectionString = baglantiCumlesi;
+
+            veritabaniBaglanti.Open();
+
+            string sorgu = "SELECT yaziciID FROM Yazici WHERE yaziciAdi = @yaziciAdi";
+
+            using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
+            {
+                veritabaniKomut.Parameters.AddWithValue("@yaziciAdi", _yaziciAdi);
+                //veritabaniKomut.Parameters.AddWithValue("@seciliTesis", _tesisAdi);
+                //veritabaniKomut.Parameters.AddWithValue("@seciliBant", _bantAdi);
+
+                datatable.Load(veritabaniKomut.ExecuteReader());
+            }
+
+            veritabaniBaglanti.Close();
+
+            return Convert.ToInt32(datatable.Rows[0]["yaziciID"]);
+        }
+
         public bool yaziciMevcut(string _fabrikaAdi, string _tesisAdi, string _BantAdi, string _eklenecekYazici)
         {
             DataTable datatable = new DataTable();
@@ -568,13 +644,14 @@ namespace Remote_Printer
                                string _yeniYaziciAdi,
                                string _yeniIPAdres,
                                string _yeniPortNo,
-                               string _yeniCOMID)
+                               string _yeniCOMID,
+                                int _yeniYaziciTipi)
         {
             veritabaniBaglanti.ConnectionString = baglantiCumlesi;
 
             veritabaniBaglanti.Open();
 
-            string sorgu = "INSERT INTO Yazici (bantID,yaziciAdi,ipAdres,portNo,comID) VALUES ((SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant),@yaziciAdi, @ipAdres, @portNo, @comID)";
+            string sorgu = "INSERT INTO Yazici (bantID,yaziciAdi,ipAdres,portNo,comID,yaziciTipi) VALUES ((SELECT bantID FROM Bant WHERE tesisID = (SELECT tesisID FROM Tesis WHERE fabrikaID = (SELECT fabrikaID from Fabrika WHERE fabrikaAdi = @seciliFabrika) AND tesisAdi = @seciliTesis) AND bantAdi = @seciliBant),@yaziciAdi, @ipAdres, @portNo, @comID, @yaziciTipi)";
 
             using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
             {
@@ -585,6 +662,7 @@ namespace Remote_Printer
                 veritabaniKomut.Parameters.AddWithValue("@ipAdres", _yeniIPAdres);
                 veritabaniKomut.Parameters.AddWithValue("@portNo", _yeniPortNo);
                 veritabaniKomut.Parameters.AddWithValue("@comID", _yeniCOMID);
+                veritabaniKomut.Parameters.AddWithValue("@yaziciTipi", _yeniYaziciTipi);
                 
                 veritabaniKomut.ExecuteNonQuery();
             }
@@ -599,7 +677,8 @@ namespace Remote_Printer
                                    string _yeniYaziciAdi,
                                    string _yeniIPAdres,
                                    string _yeniPortNo,
-                                   string _yeniCOMID)
+                                   string _yeniCOMID,
+                                    int _yeniYaziciTipi)
         {
             int bantID;
             int yaziciID;
@@ -624,7 +703,7 @@ namespace Remote_Printer
             int.TryParse(datatable.Rows[_yaziciIndeks]["bantID"].ToString(), out bantID);
             int.TryParse(datatable.Rows[_yaziciIndeks]["yaziciID"].ToString(), out yaziciID);
 
-            sorgu = "UPDATE Yazici SET yaziciAdi=@yaziciAdi, ipAdres = @ipAdres, portNo = @portNo, comID = @comID WHERE yaziciID=@yaziciID AND bantID=@bantID";
+            sorgu = "UPDATE Yazici SET yaziciAdi=@yaziciAdi, ipAdres = @ipAdres, portNo = @portNo, comID = @comID, yaziciTipi = @yaziciTipi WHERE yaziciID=@yaziciID AND bantID=@bantID";
 
             using (veritabaniKomut = new SQLiteCommand(sorgu, veritabaniBaglanti))
             {
@@ -634,6 +713,7 @@ namespace Remote_Printer
                 veritabaniKomut.Parameters.AddWithValue("@comID", _yeniCOMID);
                 veritabaniKomut.Parameters.AddWithValue("@yaziciID", yaziciID);
                 veritabaniKomut.Parameters.AddWithValue("@bantID", bantID);
+                veritabaniKomut.Parameters.AddWithValue("@yaziciTipi", _yeniYaziciTipi);
 
                 veritabaniKomut.ExecuteNonQuery();
             }

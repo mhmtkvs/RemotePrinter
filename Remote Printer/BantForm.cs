@@ -13,8 +13,6 @@ namespace Remote_Printer
     {
         veritabaniOperasyon veriOperasyon = new veritabaniOperasyon();
 
-        bool ilkIslem = false;
-
         public BantForm()
         {
             InitializeComponent();
@@ -24,7 +22,16 @@ namespace Remote_Printer
         {
             var fabrikaIsimleri = veriOperasyon.fabrikaGetir();
 
-            cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
+            if (fabrikaIsimleri.Count() == 0)
+            {
+                cmbKayitliFabrikalar.Enabled = false;
+            }
+            else
+            {
+                cmbKayitliFabrikalar.Enabled = true;
+                cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
+            }
+
 
             cmbKayitliTesisler.Enabled = false;
 

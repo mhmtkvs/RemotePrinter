@@ -61,6 +61,10 @@
             this.lblYeniYaziciAdi = new System.Windows.Forms.Label();
             this.txtYeniYaziciAdi = new System.Windows.Forms.TextBox();
             this.txtYeniIPAdres1 = new System.Windows.Forms.TextBox();
+            this.cmbGuncelYaziciTipi = new System.Windows.Forms.ComboBox();
+            this.lblYaziciTipi = new System.Windows.Forms.Label();
+            this.lblYeniYaziciTipi = new System.Windows.Forms.Label();
+            this.cmbYeniYaziciTipi = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvYazicilar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +104,7 @@
             // 
             // btnYaziciGuncelle
             // 
-            this.btnYaziciGuncelle.Location = new System.Drawing.Point(200, 430);
+            this.btnYaziciGuncelle.Location = new System.Drawing.Point(200, 444);
             this.btnYaziciGuncelle.Name = "btnYaziciGuncelle";
             this.btnYaziciGuncelle.Size = new System.Drawing.Size(75, 23);
             this.btnYaziciGuncelle.TabIndex = 36;
@@ -243,7 +247,7 @@
             // 
             // btnYaziciEkle
             // 
-            this.btnYaziciEkle.Location = new System.Drawing.Point(200, 547);
+            this.btnYaziciEkle.Location = new System.Drawing.Point(200, 584);
             this.btnYaziciEkle.Name = "btnYaziciEkle";
             this.btnYaziciEkle.Size = new System.Drawing.Size(75, 23);
             this.btnYaziciEkle.TabIndex = 35;
@@ -253,7 +257,7 @@
             // 
             // txtYeniComID
             // 
-            this.txtYeniComID.Location = new System.Drawing.Point(163, 521);
+            this.txtYeniComID.Location = new System.Drawing.Point(163, 544);
             this.txtYeniComID.Name = "txtYeniComID";
             this.txtYeniComID.Size = new System.Drawing.Size(112, 20);
             this.txtYeniComID.TabIndex = 63;
@@ -261,7 +265,7 @@
             // lblYeniComID
             // 
             this.lblYeniComID.AutoSize = true;
-            this.lblYeniComID.Location = new System.Drawing.Point(160, 505);
+            this.lblYeniComID.Location = new System.Drawing.Point(160, 528);
             this.lblYeniComID.Name = "lblYeniComID";
             this.lblYeniComID.Size = new System.Drawing.Size(107, 13);
             this.lblYeniComID.TabIndex = 62;
@@ -269,7 +273,7 @@
             // 
             // txtYeniPortNo
             // 
-            this.txtYeniPortNo.Location = new System.Drawing.Point(163, 482);
+            this.txtYeniPortNo.Location = new System.Drawing.Point(163, 505);
             this.txtYeniPortNo.Name = "txtYeniPortNo";
             this.txtYeniPortNo.Size = new System.Drawing.Size(112, 20);
             this.txtYeniPortNo.TabIndex = 61;
@@ -277,7 +281,7 @@
             // lblYeniPortNo
             // 
             this.lblYeniPortNo.AutoSize = true;
-            this.lblYeniPortNo.Location = new System.Drawing.Point(160, 463);
+            this.lblYeniPortNo.Location = new System.Drawing.Point(160, 486);
             this.lblYeniPortNo.Name = "lblYeniPortNo";
             this.lblYeniPortNo.Size = new System.Drawing.Size(102, 13);
             this.lblYeniPortNo.TabIndex = 60;
@@ -285,21 +289,21 @@
             // 
             // txtYeniIPAdres4
             // 
-            this.txtYeniIPAdres4.Location = new System.Drawing.Point(106, 521);
+            this.txtYeniIPAdres4.Location = new System.Drawing.Point(106, 544);
             this.txtYeniIPAdres4.Name = "txtYeniIPAdres4";
             this.txtYeniIPAdres4.Size = new System.Drawing.Size(24, 20);
             this.txtYeniIPAdres4.TabIndex = 59;
             // 
             // txtYeniIPAdres3
             // 
-            this.txtYeniIPAdres3.Location = new System.Drawing.Point(77, 521);
+            this.txtYeniIPAdres3.Location = new System.Drawing.Point(77, 544);
             this.txtYeniIPAdres3.Name = "txtYeniIPAdres3";
             this.txtYeniIPAdres3.Size = new System.Drawing.Size(24, 20);
             this.txtYeniIPAdres3.TabIndex = 58;
             // 
             // txtYeniIPAdres2
             // 
-            this.txtYeniIPAdres2.Location = new System.Drawing.Point(47, 521);
+            this.txtYeniIPAdres2.Location = new System.Drawing.Point(47, 544);
             this.txtYeniIPAdres2.Name = "txtYeniIPAdres2";
             this.txtYeniIPAdres2.Size = new System.Drawing.Size(24, 20);
             this.txtYeniIPAdres2.TabIndex = 57;
@@ -307,7 +311,7 @@
             // lblYeniIPAdres
             // 
             this.lblYeniIPAdres.AutoSize = true;
-            this.lblYeniIPAdres.Location = new System.Drawing.Point(14, 505);
+            this.lblYeniIPAdres.Location = new System.Drawing.Point(14, 528);
             this.lblYeniIPAdres.Name = "lblYeniIPAdres";
             this.lblYeniIPAdres.Size = new System.Drawing.Size(110, 13);
             this.lblYeniIPAdres.TabIndex = 56;
@@ -316,7 +320,7 @@
             // lblYeniYaziciAdi
             // 
             this.lblYeniYaziciAdi.AutoSize = true;
-            this.lblYeniYaziciAdi.Location = new System.Drawing.Point(14, 463);
+            this.lblYeniYaziciAdi.Location = new System.Drawing.Point(14, 486);
             this.lblYeniYaziciAdi.Name = "lblYeniYaziciAdi";
             this.lblYeniYaziciAdi.Size = new System.Drawing.Size(112, 13);
             this.lblYeniYaziciAdi.TabIndex = 55;
@@ -324,23 +328,61 @@
             // 
             // txtYeniYaziciAdi
             // 
-            this.txtYeniYaziciAdi.Location = new System.Drawing.Point(14, 482);
+            this.txtYeniYaziciAdi.Location = new System.Drawing.Point(14, 505);
             this.txtYeniYaziciAdi.Name = "txtYeniYaziciAdi";
             this.txtYeniYaziciAdi.Size = new System.Drawing.Size(118, 20);
             this.txtYeniYaziciAdi.TabIndex = 54;
             // 
             // txtYeniIPAdres1
             // 
-            this.txtYeniIPAdres1.Location = new System.Drawing.Point(17, 521);
+            this.txtYeniIPAdres1.Location = new System.Drawing.Point(17, 544);
             this.txtYeniIPAdres1.Name = "txtYeniIPAdres1";
             this.txtYeniIPAdres1.Size = new System.Drawing.Size(24, 20);
             this.txtYeniIPAdres1.TabIndex = 64;
+            // 
+            // cmbGuncelYaziciTipi
+            // 
+            this.cmbGuncelYaziciTipi.FormattingEnabled = true;
+            this.cmbGuncelYaziciTipi.Location = new System.Drawing.Point(17, 446);
+            this.cmbGuncelYaziciTipi.Name = "cmbGuncelYaziciTipi";
+            this.cmbGuncelYaziciTipi.Size = new System.Drawing.Size(121, 21);
+            this.cmbGuncelYaziciTipi.TabIndex = 65;
+            // 
+            // lblYaziciTipi
+            // 
+            this.lblYaziciTipi.AutoSize = true;
+            this.lblYaziciTipi.Location = new System.Drawing.Point(15, 427);
+            this.lblYaziciTipi.Name = "lblYaziciTipi";
+            this.lblYaziciTipi.Size = new System.Drawing.Size(130, 13);
+            this.lblYaziciTipi.TabIndex = 66;
+            this.lblYaziciTipi.Text = "Güncel yazici tipi seçiniz...";
+            // 
+            // lblYeniYaziciTipi
+            // 
+            this.lblYeniYaziciTipi.AutoSize = true;
+            this.lblYeniYaziciTipi.Location = new System.Drawing.Point(15, 567);
+            this.lblYeniYaziciTipi.Name = "lblYeniYaziciTipi";
+            this.lblYeniYaziciTipi.Size = new System.Drawing.Size(117, 13);
+            this.lblYeniYaziciTipi.TabIndex = 68;
+            this.lblYeniYaziciTipi.Text = "Yeni yazici tipi seçiniz...";
+            // 
+            // cmbYeniYaziciTipi
+            // 
+            this.cmbYeniYaziciTipi.FormattingEnabled = true;
+            this.cmbYeniYaziciTipi.Location = new System.Drawing.Point(17, 586);
+            this.cmbYeniYaziciTipi.Name = "cmbYeniYaziciTipi";
+            this.cmbYeniYaziciTipi.Size = new System.Drawing.Size(121, 21);
+            this.cmbYeniYaziciTipi.TabIndex = 67;
             // 
             // YaziciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 597);
+            this.ClientSize = new System.Drawing.Size(290, 651);
+            this.Controls.Add(this.lblYeniYaziciTipi);
+            this.Controls.Add(this.cmbYeniYaziciTipi);
+            this.Controls.Add(this.lblYaziciTipi);
+            this.Controls.Add(this.cmbGuncelYaziciTipi);
             this.Controls.Add(this.txtYeniIPAdres1);
             this.Controls.Add(this.txtYeniComID);
             this.Controls.Add(this.lblYeniComID);
@@ -419,5 +461,9 @@
         private System.Windows.Forms.Label lblYeniYaziciAdi;
         private System.Windows.Forms.TextBox txtYeniYaziciAdi;
         private System.Windows.Forms.TextBox txtYeniIPAdres1;
+        private System.Windows.Forms.ComboBox cmbGuncelYaziciTipi;
+        private System.Windows.Forms.Label lblYaziciTipi;
+        private System.Windows.Forms.Label lblYeniYaziciTipi;
+        private System.Windows.Forms.ComboBox cmbYeniYaziciTipi;
     }
 }

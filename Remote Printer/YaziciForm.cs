@@ -20,9 +20,27 @@ namespace Remote_Printer
 
         private void YaziciForm_Load(object sender, EventArgs e)
         {
+            // form yüklenirken yazici tiplerini combobox içerisine doldur.
+            string[] yaziciTipleri = { "LogoPrinter", "HR500", "TIFLEX" };
+
+            cmbYeniYaziciTipi.Items.AddRange(yaziciTipleri);
+            cmbGuncelYaziciTipi.Items.AddRange(yaziciTipleri);
+
+            cmbGuncelYaziciTipi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbYeniYaziciTipi.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
             var fabrikaIsimleri = veriOperasyon.fabrikaGetir();
 
-            cmbKayitliFabrika.Items.AddRange(fabrikaIsimleri);
+            if (fabrikaIsimleri.Count() == 0)
+            {
+                cmbKayitliFabrika.Enabled = false;
+            }
+            else
+            {
+                cmbKayitliFabrika.Enabled = true;
+                cmbKayitliFabrika.Items.AddRange(fabrikaIsimleri);
+            }
 
             cmbKayitliTesis.Enabled = false;
             cmbKayitliBant.Enabled = false;
@@ -109,6 +127,7 @@ namespace Remote_Printer
             txtGuncelIPAdres3.Text = ipAdresParcali[2];
             txtGuncelIPAdres4.Text = ipAdresParcali[3];
 
+
             btnYaziciGuncelle.Enabled = true;
             btnYaziciSil.Enabled = true;
         }
@@ -125,14 +144,15 @@ namespace Remote_Printer
                 txtYeniIPAdres3.Text != "" &&
                 txtYeniIPAdres4.Text != "" &&
                 txtYeniPortNo.Text != "" &&
-                txtYeniComID.Text != "")
+                txtYeniComID.Text != "" &&
+                cmbYeniYaziciTipi.SelectedItem.ToString() != "")
             {
                 if (veriOperasyon.yaziciMevcut(seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, this.txtYeniYaziciAdi.Text) == false)
                 {
                     //
                     string ipAdres = txtYeniIPAdres1.Text + "." + txtYeniIPAdres2.Text + "." + txtYeniIPAdres3.Text + "." + txtYeniIPAdres4.Text;
 
-                    veriOperasyon.yaziciEkle(seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, txtYeniYaziciAdi.Text, ipAdres, txtYeniPortNo.Text, txtYeniComID.Text);
+                    veriOperasyon.yaziciEkle(seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, txtYeniYaziciAdi.Text, ipAdres, txtYeniPortNo.Text, txtYeniComID.Text, cmbYeniYaziciTipi.SelectedIndex);
 
                     veriOperasyon.yaziciGetir(seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, gvYazicilar);
 
@@ -143,6 +163,7 @@ namespace Remote_Printer
                     txtYeniIPAdres4.Clear();
                     txtYeniPortNo.Clear();
                     txtYeniComID.Clear();
+                    cmbYeniYaziciTipi.SelectedText = "";
                 }
                 else
                 {
@@ -178,7 +199,7 @@ namespace Remote_Printer
 
                     string ipAdres = txtGuncelIPAdres1.Text + "." + txtGuncelIPAdres2.Text + "." + txtGuncelIPAdres3.Text + "." + txtGuncelIPAdres4.Text;
 
-                    veriOperasyon.yaziciGuncelle(SeciliIndeks, seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, this.txtGuncelYaziciAdi.Text, ipAdres, this.txtGuncelPortNo.Text, this.txtGuncelComID.Text); 
+                    veriOperasyon.yaziciGuncelle(SeciliIndeks, seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, this.txtGuncelYaziciAdi.Text, ipAdres, this.txtGuncelPortNo.Text, this.txtGuncelComID.Text, this.cmbYeniYaziciTipi.SelectedIndex); 
 
                     veriOperasyon.yaziciGetir(seciliFabrikaAdi, seciliTesisAdi, seciliBantAdi, gvYazicilar);
                 }
@@ -232,6 +253,8 @@ namespace Remote_Printer
             }
 
         }
+
+
 
     }
 }

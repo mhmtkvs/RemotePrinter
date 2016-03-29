@@ -47,3 +47,6 @@ D:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.csproj.GenerateReso
 C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
 C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
 C:\Users\krmkr\Documents\GitHub\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb
+Z:\RemotePrinter\Remote Printer\bin\Debug\Remote Printer.exe.config
+Z:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.exe
+Z:\RemotePrinter\Remote Printer\obj\x86\Debug\Remote Printer.pdb

@@ -24,7 +24,15 @@ namespace Remote_Printer
         {
             var fabrikaIsimleri = veriOperasyon.fabrikaGetir();
 
-            cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
+            if (fabrikaIsimleri.Count() == 0)
+            {
+                cmbKayitliFabrikalar.Enabled = false;
+            }
+            else
+            {
+                cmbKayitliFabrikalar.Enabled = true;
+                cmbKayitliFabrikalar.Items.AddRange(fabrikaIsimleri);
+            }
 
             btnTesisSil.Enabled = false;
             btnTesisGuncelle.Enabled = false;

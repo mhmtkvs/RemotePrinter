@@ -47,8 +47,11 @@
             this.lblYazici = new System.Windows.Forms.Label();
             this.cmbYazici = new System.Windows.Forms.ComboBox();
             this.gvKanal = new System.Windows.Forms.DataGridView();
+            this.pbOnizleme = new System.Windows.Forms.PictureBox();
+            this.btnYazdir = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvKanal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOnizleme)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -136,12 +139,13 @@
             this.cmbFabrika.Size = new System.Drawing.Size(121, 21);
             this.cmbFabrika.TabIndex = 1;
             this.cmbFabrika.Text = "Fabrika seçiniz...";
+            this.cmbFabrika.SelectedIndexChanged += new System.EventHandler(this.cmbFabrika_SelectedIndexChanged);
             // 
             // lblFabrika
             // 
             this.lblFabrika.AutoSize = true;
             this.lblFabrika.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblFabrika.Location = new System.Drawing.Point(12, 37);
+            this.lblFabrika.Location = new System.Drawing.Point(9, 37);
             this.lblFabrika.Name = "lblFabrika";
             this.lblFabrika.Size = new System.Drawing.Size(59, 13);
             this.lblFabrika.TabIndex = 2;
@@ -151,7 +155,7 @@
             // 
             this.lblTesis.AutoSize = true;
             this.lblTesis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTesis.Location = new System.Drawing.Point(139, 37);
+            this.lblTesis.Location = new System.Drawing.Point(184, 37);
             this.lblTesis.Name = "lblTesis";
             this.lblTesis.Size = new System.Drawing.Size(43, 13);
             this.lblTesis.TabIndex = 4;
@@ -160,17 +164,18 @@
             // cmbTesis
             // 
             this.cmbTesis.FormattingEnabled = true;
-            this.cmbTesis.Location = new System.Drawing.Point(139, 56);
+            this.cmbTesis.Location = new System.Drawing.Point(187, 56);
             this.cmbTesis.Name = "cmbTesis";
             this.cmbTesis.Size = new System.Drawing.Size(121, 21);
             this.cmbTesis.TabIndex = 3;
             this.cmbTesis.Text = "Tesis seçiniz...";
+            this.cmbTesis.SelectedIndexChanged += new System.EventHandler(this.cmbTesis_SelectedIndexChanged);
             // 
             // lblBant
             // 
             this.lblBant.AutoSize = true;
             this.lblBant.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblBant.Location = new System.Drawing.Point(355, 37);
+            this.lblBant.Location = new System.Drawing.Point(359, 37);
             this.lblBant.Name = "lblBant";
             this.lblBant.Size = new System.Drawing.Size(40, 13);
             this.lblBant.TabIndex = 6;
@@ -179,17 +184,18 @@
             // cmbBant
             // 
             this.cmbBant.FormattingEnabled = true;
-            this.cmbBant.Location = new System.Drawing.Point(355, 56);
+            this.cmbBant.Location = new System.Drawing.Point(362, 56);
             this.cmbBant.Name = "cmbBant";
             this.cmbBant.Size = new System.Drawing.Size(121, 21);
             this.cmbBant.TabIndex = 5;
             this.cmbBant.Text = "Bant seçiniz...";
+            this.cmbBant.SelectedIndexChanged += new System.EventHandler(this.cmbBant_SelectedIndexChanged);
             // 
             // lblYazici
             // 
             this.lblYazici.AutoSize = true;
             this.lblYazici.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblYazici.Location = new System.Drawing.Point(519, 37);
+            this.lblYazici.Location = new System.Drawing.Point(534, 37);
             this.lblYazici.Name = "lblYazici";
             this.lblYazici.Size = new System.Drawing.Size(47, 13);
             this.lblYazici.TabIndex = 8;
@@ -198,11 +204,12 @@
             // cmbYazici
             // 
             this.cmbYazici.FormattingEnabled = true;
-            this.cmbYazici.Location = new System.Drawing.Point(519, 56);
+            this.cmbYazici.Location = new System.Drawing.Point(537, 56);
             this.cmbYazici.Name = "cmbYazici";
             this.cmbYazici.Size = new System.Drawing.Size(121, 21);
             this.cmbYazici.TabIndex = 7;
             this.cmbYazici.Text = "Yazıcı seçiniz...";
+            this.cmbYazici.SelectedIndexChanged += new System.EventHandler(this.cmbYazici_SelectedIndexChanged);
             // 
             // gvKanal
             // 
@@ -213,11 +220,33 @@
             this.gvKanal.TabIndex = 9;
             this.gvKanal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvKanal_CellClick);
             // 
+            // pbOnizleme
+            // 
+            this.pbOnizleme.Location = new System.Drawing.Point(12, 317);
+            this.pbOnizleme.Name = "pbOnizleme";
+            this.pbOnizleme.Size = new System.Drawing.Size(648, 72);
+            this.pbOnizleme.TabIndex = 10;
+            this.pbOnizleme.TabStop = false;
+            // 
+            // btnYazdir
+            // 
+            this.btnYazdir.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYazdir.ForeColor = System.Drawing.Color.Red;
+            this.btnYazdir.Location = new System.Drawing.Point(554, 396);
+            this.btnYazdir.Name = "btnYazdir";
+            this.btnYazdir.Size = new System.Drawing.Size(106, 37);
+            this.btnYazdir.TabIndex = 11;
+            this.btnYazdir.Text = "Yazdır";
+            this.btnYazdir.UseVisualStyleBackColor = true;
+            this.btnYazdir.Click += new System.EventHandler(this.btnYazdir_Click);
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 433);
+            this.ClientSize = new System.Drawing.Size(672, 445);
+            this.Controls.Add(this.btnYazdir);
+            this.Controls.Add(this.pbOnizleme);
             this.Controls.Add(this.gvKanal);
             this.Controls.Add(this.lblYazici);
             this.Controls.Add(this.cmbYazici);
@@ -236,6 +265,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvKanal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOnizleme)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +291,8 @@
         private System.Windows.Forms.Label lblYazici;
         private System.Windows.Forms.ComboBox cmbYazici;
         private System.Windows.Forms.DataGridView gvKanal;
+        private System.Windows.Forms.PictureBox pbOnizleme;
+        private System.Windows.Forms.Button btnYazdir;
 
 
     }
